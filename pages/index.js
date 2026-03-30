@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import styles from '../styles/Home.module.css';
+import { products } from '../data/products';
+import Router from 'next/router';
 
 export default function Home() {
   const [cart, setCart] = useState([]);
@@ -13,51 +16,6 @@ export default function Home() {
   useEffect(() => {
     localStorage.setItem('briarBeamCart', JSON.stringify(cart));
   }, [cart]);
-
-  const products = [
-    {
-      id: 1,
-      name: 'The Eloise Table',
-      description: 'Dining. Farm table in solid oak. Seats six. Matte finish.',
-      price: 2400,
-      image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&h=700&fit=crop'
-    },
-    {
-      id: 2,
-      name: 'The Juniper',
-      description: 'Side table. Walnut with refined proportions and hand-finished details.',
-      price: 1200,
-      image: 'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=500&h=700&fit=crop'
-    },
-    {
-      id: 3,
-      name: 'The Jack Side Tables',
-      description: 'Side tables. Pair of oak tables with clean design. Versatile.',
-      price: 1200,
-      image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&h=700&fit=crop'
-    },
-    {
-      id: 4,
-      name: 'The Julien',
-      description: 'Coffee table. Handcrafted walnut with traditional joinery.',
-      price: 3800,
-      image: 'https://images.unsplash.com/photo-1577808840935-c00414ecd12d?w=500&h=700&fit=crop'
-    },
-    {
-      id: 5,
-      name: 'The Aubrey',
-      description: 'Coffee table. French-inspired with six drawers. Walnut.',
-      price: 4000,
-      image: 'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=500&h=700&fit=crop'
-    },
-    {
-      id: 6,
-      name: 'The Livia',
-      description: 'Console. Country style with timeless charm and handcrafted details.',
-      price: 1800,
-      image: 'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=500&h=700&fit=crop'
-    }
-  ];
 
   const addToCart = (product) => {
     const existing = cart.find(item => item.id === product.id);
@@ -90,7 +48,7 @@ export default function Home() {
         </div>
         <nav className={styles.nav}>
           <a href="#shop">Shop</a>
-          <a href="#about">About</a>
+          <Link href="/about">About</Link>
           <a href="#contact">Contact</a>
           <button className={styles.cartIcon} onClick={() => setCartOpen(!cartOpen)}>
             🛒 <span className={styles.cartCount}>{cart.length}</span>
@@ -99,22 +57,38 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className={styles.hero}>
-        <h2>Small Batch Furniture Built to Last</h2>
-        <p>We believe in art and making people happy. Each piece is handcrafted with intention, designed to bring joy and endure for generations.</p>
+      <section className={styles.hero} style={{ backgroundImage: `url(https://images.unsplash.com/photo-1500382017468-7049fae79ece?w=1200&h=1200&fit=crop)` }}>
+        <div className={styles.heroOverlay}></div>
+        <div className={styles.heroText}>
+          <h2>Furniture Made for a Lifetime</h2>
+          <p>We make things the right way. Slow. Thoughtful. Built to be loved, not replaced. Every piece is handcrafted by people who care about wood, about craft, about making something that will be in your home for decades.</p>
+        </div>
       </section>
 
       {/* Products */}
       <main className={styles.main}>
         <div className={styles.productGrid}>
           {products.map(product => (
-            <div key={product.id} className={styles.productCard}>
-              <div className={styles.productImage} style={{ backgroundImage: `url(${product.image})` }}></div>
-              <h3 className={styles.productName}>{product.name}</h3>
-              <p className={styles.productDescription}>{product.description}</p>
-              <p className={styles.productPrice}>${product.price.toLocaleString()}</p>
-              <button className={styles.addButton} onClick={() => addToCart(product)}>Add to Cart</button>
-            </div>
+            <Link key={product.id} href={`/products/${product.id}`}>
+              <div className={styles.productCard}>
+                <div
+                  className={styles.productImage}
+                  style={{ backgroundImage: `url(${product.image})` }}
+                ></div>
+                <h3 className={styles.productName}>{product.name}</h3>
+                <p className={styles.productDescription}>{product.category}</p>
+                <p className={styles.productPrice}>${product.price.toLocaleString()}</p>
+                <button
+                  className={styles.addButton}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    addToCart(product);
+                  }}
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </Link>
           ))}
         </div>
       </main>

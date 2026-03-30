@@ -73,27 +73,51 @@
 
 /* Hero */
 .hero {
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
   padding: 80px 40px;
-  text-align: center;
+  position: relative;
   border-bottom: 1px solid #e8e8e8;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.4) 60%, rgba(255,255,255,0.85) 85%, rgba(255,255,255,1) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heroText {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
 }
 
 .hero h2 {
   font-family: 'Crimson Text', serif;
   font-size: 52px;
   font-weight: 400;
-  margin-bottom: 20px;
-  line-height: 1.3;
+  margin-bottom: 24px;
+  line-height: 1.2;
   letter-spacing: -0.5px;
+  color: #2a2a2a;
 }
 
 .hero p {
-  font-size: 16px;
-  color: #666;
-  max-width: 600px;
-  margin: 0 auto;
+  font-size: 15px;
+  color: #555;
   font-weight: 300;
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
 /* Main */
@@ -322,6 +346,11 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
+  .hero {
+    min-height: 80vh;
+    padding: 60px 40px;
+  }
+
   .productGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
@@ -339,11 +368,17 @@
   }
 
   .hero {
-    padding: 60px 20px;
+    min-height: 70vh;
+    padding: 40px 20px;
   }
 
   .hero h2 {
     font-size: 36px;
+    margin-bottom: 16px;
+  }
+
+  .hero p {
+    font-size: 14px;
   }
 
   .main {
