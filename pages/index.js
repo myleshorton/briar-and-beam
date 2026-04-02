@@ -130,7 +130,7 @@ export default function Home() {
       <footer className={styles.footer}>
         <p>&copy; 2024 Briar & Beam. Handmade with intention.</p>
         <p>
-          <a href="mailto:hello@briarandbeam.com">hello@briarandbeam.com</a> ·
+          <a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a> ·
           <a href="#">About</a> ·
           <a href="#">Sustainability</a>
         </p>
