@@ -1,3 +1,33 @@
+:root {
+  /* Pure white background to match photo backdrops, warm charcoal ink */
+  --paper: #ffffff;
+  --paper-deep: #f7f4ec;
+  --paper-cream: #fbf8f1;
+  --ink: #2a2520;
+  --ink-soft: #5e544a;
+  --ink-faint: #948877;
+
+  /* No accent — everything reads in warm charcoal */
+  --oxblood: #2a2520;
+  --oxblood-deep: #1a1612;
+  --gold: #a8956a;
+  --rule: #e3ddcf;
+  --rule-soft: #efe9da;
+
+  /* Type */
+  --display: var(--font-display), "Fraunces", Georgia, serif;
+  --body: var(--font-body), "EB Garamond", "Iowan Old Style", Georgia, serif;
+  --mono: "JetBrains Mono", "SF Mono", Menlo, monospace;
+
+  /* Spacing */
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section: clamp(4rem, 10vw, 9rem);
+
+  /* Easing */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-quart: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,10 +38,18 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.55;
+  font-feature-settings: "kern", "liga", "onum";
 }
 
 body {
-  background: #ffffff;
+  background: var(--paper);
 }
 
 a {
@@ -21,4 +59,89 @@ a {
 
 button {
   font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Utilities */
+.smallcaps {
+  font-family: var(--body);
+  font-style: normal;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  font-feature-settings: "smcp";
+}
+
+.mono {
+  font-family: var(--mono);
+  letter-spacing: 0.04em;
+}
+
+.italic-display {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-feature-settings: "ss01", "ss02";
+}
+
+/* Scroll-reveal — JS toggles .is-in */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1100ms var(--ease-out), transform 1100ms var(--ease-out);
+  transition-delay: var(--delay, 0ms);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Page-load stagger reveal */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.rise {
+  opacity: 0;
+  animation: rise 1.4s var(--ease-out) forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* Ken-burns */
+@keyframes kenburns {
+  0%   { transform: scale(1.06) translate3d(-1%, -0.5%, 0); }
+  100% { transform: scale(1.14) translate3d(1%, 1%, 0); }
+}
+
+.kenburns {
+  animation: kenburns 22s var(--ease-out) infinite alternate;
+  will-change: transform;
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }

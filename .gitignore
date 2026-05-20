@@ -36,3 +36,7 @@ yarn-error.log*
 pricing.csv
 marys-christmas.md
 public/images/FullSizeRender.heic
+
+# Local-only photo tooling & raw assets (not part of the deployed site)
+raw/
+scripts/

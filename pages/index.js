@@ -1,13 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { products } from '../data/products';
-import Router from 'next/router';
+
+const HERO_IMAGE = 'https://roselandusa.com/cdn/shop/files/Homepage-hero-DT.jpg?v=1759406164';
+const ATELIER_IMAGE = 'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=1800&q=85&auto=format&fit=crop';
+
+const PROCESS = [
+  { n: '01', title: 'Selection', text: 'We choose every board by hand — domestic white oak and walnut from FSC-certified suppliers, examined for grain, figure, and stability.' },
+  { n: '02', title: 'Joinery', text: 'Mortise-and-tenon, hand-cut dovetails, drawbore pegs. Traditional methods that create strength without metal fasteners.' },
+  { n: '03', title: 'Finishing', text: 'Hand-applied oil and wax — no spray, no shortcuts. The wood keeps breathing; the finish only deepens with age.' },
+  { n: '04', title: 'Delivery', text: 'White-glove placement in your home. Each piece arrives with its own ledger of materials, makers, and care notes.' },
+];
 
 export default function Home() {
   const [cart, setCart] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
 
+  // Hydrate cart
   useEffect(() => {
     const saved = localStorage.getItem('briarBeamCart');
     if (saved) setCart(JSON.parse(saved));
@@ -17,124 +30,368 @@ export default function Home() {
     localStorage.setItem('briarBeamCart', JSON.stringify(cart));
   }, [cart]);
 
+  // Scroll progress + header state
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement;
+      const total = h.scrollHeight - h.clientHeight;
+      const ratio = total > 0 ? h.scrollTop / total : 0;
+      setProgress(ratio);
+      setScrolled(h.scrollTop > 80);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Reveal-on-scroll
+  useEffect(() => {
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-in');
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.08 }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   const addToCart = (product) => {
-    const existing = cart.find(item => item.id === product.id);
+    const existing = cart.find((item) => item.id === product.id);
     if (existing) {
-      setCart(cart.map(item => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item));
+      setCart(cart.map((i) => (i.id === product.id ? { ...i, quantity: i.quantity + 1 } : i)));
     } else {
       setCart([...cart, { ...product, quantity: 1 }]);
     }
+    setCartOpen(true);
   };
 
-  const removeFromCart = (id) => {
-    setCart(cart.filter(item => item.id !== id));
+  const removeFromCart = (id) => setCart(cart.filter((i) => i.id !== id));
+  const updateQty = (id, delta) => {
+    const next = cart
+      .map((i) => (i.id === id ? { ...i, quantity: Math.max(1, i.quantity + delta) } : i))
+      .filter((i) => i.quantity > 0);
+    setCart(next);
   };
 
-  const updateQuantity = (id, change) => {
-    const updated = cart.map(item =>
-      item.id === id ? { ...item, quantity: Math.max(1, item.quantity + change) } : item
-    );
-    setCart(updated.filter(item => item.quantity > 0));
-  };
+  const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+  const cartCount = cart.reduce((s, i) => s + i.quantity, 0);
 
-  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  // Featured: The Jack (id 5) — fall back to first
+  const featured = products.find((p) => p.id === 5) || products[0];
+  const rest = products.filter((p) => p.id !== featured.id);
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Briar &amp; Beam — Heirloom Furniture, Made by Hand</title>
+        <meta name="description" content="Handcrafted hardwood furniture from a small workshop. Mortise-and-tenon joinery, oil finishes, and pieces built to last generations." />
+      </Head>
+
+      {/* Scroll progress hairline */}
+      <div className={styles.progress} style={{ transform: `scaleX(${progress})` }} />
+
       {/* Header */}
-      <header className={styles.header}>
-        <div className={styles.logo}>
-          <h1>Briar & Beam</h1>
+      <header className={`${styles.header} ${scrolled ? styles.headerSolid : ''}`}>
+        <div className={styles.headerInner}>
+          <Link href="/" className={styles.wordmark}>
+            <span className={styles.wordmarkBriar}>Briar</span>
+            <span className={styles.wordmarkAmp}>&amp;</span>
+            <span className={styles.wordmarkBeam}>Beam</span>
+          </Link>
+          <nav className={styles.nav}>
+            <a href="#collection">Collection</a>
+            <Link href="/about">Atelier</Link>
+            <a href="#process">Process</a>
+            <a href="mailto:brianandbeam@gmail.com">Inquire</a>
+            <button className={styles.cartBtn} onClick={() => setCartOpen(true)} aria-label="Open cart">
+              <span className="smallcaps">Cart</span>
+              <span className={styles.cartCount}>{cartCount.toString().padStart(2, '0')}</span>
+            </button>
+          </nav>
         </div>
-        <nav className={styles.nav}>
-          <a href="#shop">Shop</a>
-          <Link href="/about">About</Link>
-          <a href="#contact">Contact</a>
-          <button className={styles.cartIcon} onClick={() => setCartOpen(!cartOpen)}>
-            🛒 <span className={styles.cartCount}>{cart.length}</span>
-          </button>
-        </nav>
       </header>
 
-      {/* Hero */}
-      <section className={styles.hero} style={{ backgroundImage: `url(https://images.unsplash.com/photo-1500382017468-7049fae79ece?w=1200&h=1200&fit=crop)` }}>
-        <div className={styles.heroOverlay}></div>
-        <div className={styles.heroText}>
-          <h2>Furniture Made for a Lifetime</h2>
-          <p>We make things the right way. Slow. Thoughtful. Built to be loved, not replaced. Every piece is handcrafted by people who care about wood, about craft, about making something that will be in your home for decades.</p>
+      {/* Hero — Roseland-style: full-bleed photo, minimal centered typography */}
+      <section className={styles.hero}>
+        <div className={styles.heroImageWrap}>
+          <div
+            className={`${styles.heroImage} kenburns`}
+            style={{ backgroundImage: `url(${HERO_IMAGE})` }}
+            aria-hidden="true"
+          />
+          <div className={styles.heroVignette} />
+        </div>
+
+        <div className={styles.heroInner}>
+          <span className="rise smallcaps" style={{ '--delay': '300ms' }}>Made by Hand</span>
+          <h1 className="rise" style={{ '--delay': '500ms' }}>
+            <span className={styles.heroWordmark}>Briar <em>&amp;</em> Beam</span>
+          </h1>
+          <p className={`rise ${styles.heroTagline}`} style={{ '--delay': '750ms' }}>
+            Heirloom American Furniture
+          </p>
+          <p className={`rise ${styles.heroLede}`} style={{ '--delay': '950ms' }}>
+            Solid hardwood, joined by hand, finished with oil. Built once. Kept always.
+          </p>
+          <a href="#collection" className={`rise ${styles.heroCta}`} style={{ '--delay': '1150ms' }}>
+            <span className="smallcaps">Shop the Collection</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
         </div>
       </section>
 
-      {/* Products */}
-      <main className={styles.main}>
-        <div className={styles.productGrid}>
-          {products.map(product => (
-            <Link key={product.id} href={`/products/${product.id}`}>
-              <div className={styles.productCard}>
-                <div
-                  className={styles.productImage}
-                  style={{ backgroundImage: `url(${product.image})` }}
-                ></div>
-                <h3 className={styles.productName}>{product.name}</h3>
-                <p className={styles.productDescription}>{product.category}</p>
-                <p className={styles.productPrice}>${product.price.toLocaleString()}</p>
-                <button
-                  className={styles.addButton}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    addToCart(product);
-                  }}
-                >
-                  Add to Cart
-                </button>
-              </div>
-            </Link>
-          ))}
+      {/* Editorial intro */}
+      <section className={styles.intro}>
+        <div className={styles.introInner}>
+          <span className="reveal smallcaps">An Introduction</span>
+          <h2 className={`reveal ${styles.introQuote}`} style={{ '--delay': '120ms' }}>
+            Made to <em>become family.</em>
+          </h2>
+          <div className={styles.introBody}>
+            <p className="reveal" style={{ '--delay': '240ms' }}>
+              The pieces you live with aren&rsquo;t just objects. They&rsquo;re where your family gathers — the corners that hold birthdays, the table that hosts a thousand Sunday mornings, the console that quietly watches over a hallway for forty years.
+            </p>
+            <p className="reveal" style={{ '--delay': '320ms' }}>
+              A good piece of furniture grows with a household. It softens at the edges. It deepens in color. It collects stories the way an old house does. We build ours to be lived with that way — solid hardwood, joined by hand, finished with oil. Built once. Kept always.
+            </p>
+          </div>
         </div>
-      </main>
+      </section>
 
-      {/* Cart Panel */}
-      <div className={`${styles.cartPanel} ${cartOpen ? styles.cartOpen : ''}`}>
-        <button className={styles.cartClose} onClick={() => setCartOpen(false)}>✕</button>
-        <h2>Your Cart</h2>
-        {cart.length === 0 ? (
-          <p className={styles.cartEmpty}>Your cart is empty</p>
-        ) : (
-          <>
-            <div className={styles.cartItems}>
-              {cart.map(item => (
-                <div key={item.id} className={styles.cartItem}>
-                  <div>
-                    <p className={styles.cartItemName}>{item.name}</p>
-                    <p className={styles.cartItemPrice}>${item.price}</p>
-                    <div className={styles.quantityControls}>
-                      <button onClick={() => updateQuantity(item.id, -1)}>−</button>
-                      <span>{item.quantity}</span>
-                      <button onClick={() => updateQuantity(item.id, 1)}>+</button>
-                      <button className={styles.removeBtn} onClick={() => removeFromCart(item.id)}>Remove</button>
-                    </div>
-                  </div>
+      {/* Featured piece */}
+      <section id="collection" className={styles.featured}>
+        <div className={styles.collectionHeader}>
+          <span className="reveal smallcaps">The Collection</span>
+          <h2 className={`reveal ${styles.collectionTitle}`} style={{ '--delay': '120ms' }}>
+            Seven pieces, <em>made by hand.</em>
+          </h2>
+        </div>
+
+        <div className={styles.featuredInner}>
+          <Link href={`/products/${featured.id}`} className={`reveal ${styles.featuredImageWrap}`}>
+            <div className={styles.featuredImage} style={{ backgroundImage: `url(${featured.image})` }} />
+            <div className={styles.featuredOverlay}>
+              <span className="smallcaps">View piece &rarr;</span>
+            </div>
+          </Link>
+
+          <aside className={`reveal ${styles.featuredText}`} style={{ '--delay': '160ms' }}>
+            <span className="smallcaps">Featured Piece</span>
+            <h3 className={styles.featuredTitle}>
+              <em>The {featured.name.replace('The ', '')}</em>
+            </h3>
+            <p className={styles.featuredCategory}>{featured.category}</p>
+            <p className={styles.featuredDescription}>{featured.description}</p>
+            <div className={styles.featuredMeta}>
+              <span className={styles.featuredPrice}>${featured.price.toLocaleString()}</span>
+              <Link href={`/products/${featured.id}`} className={styles.featuredLink}>
+                <span>Read the full piece</span>
+                <span aria-hidden="true">&rarr;</span>
+              </Link>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      {/* Index grid */}
+      <section className={styles.index}>
+        <div className={styles.indexHeader}>
+          <span className="reveal smallcaps">More from the Collection</span>
+        </div>
+
+        <div className={styles.indexGrid}>
+          {rest.map((p, i) => {
+            const second = (p.images && p.images[1]) || p.image;
+            return (
+              <Link
+                key={p.id}
+                href={`/products/${p.id}`}
+                className={`reveal ${styles.card}`}
+                style={{ '--delay': `${i * 80}ms` }}
+              >
+                <div className={styles.cardImageWrap}>
+                  <div className={styles.cardImage} style={{ backgroundImage: `url(${p.image})` }} />
+                  <div className={styles.cardImageHover} style={{ backgroundImage: `url(${second})` }} />
                 </div>
-              ))}
-            </div>
-            <div className={styles.cartTotal}>
-              <span>Total:</span>
-              <span>${total.toLocaleString()}</span>
-            </div>
-            <button className={styles.checkoutBtn}>Checkout (Coming Soon)</button>
-          </>
-        )}
-      </div>
+                <div className={styles.cardMeta}>
+                  <h3 className={styles.cardName}><em>{p.name}</em></h3>
+                  <p className={styles.cardCategory}>{p.category}</p>
+                  <span className={styles.cardPrice}>
+                    {p.price > 0 ? `$${p.price.toLocaleString()}` : 'Inquire'}
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Process */}
+      <section id="process" className={styles.process}>
+        <div className={styles.processInner}>
+          <div className={styles.processHeader}>
+            <span className="reveal smallcaps">The Process</span>
+            <h2 className={`reveal ${styles.processTitle}`} style={{ '--delay': '120ms' }}>
+              Slow on purpose.
+            </h2>
+            <p className={`reveal ${styles.processLead}`} style={{ '--delay': '240ms' }}>
+              Lead times of three to six weeks aren&rsquo;t a constraint — they&rsquo;re a method. Each piece is built front to back by the same pair of hands, in a single small shop.
+            </p>
+          </div>
+
+          <ol className={styles.processList}>
+            {PROCESS.map((p, i) => (
+              <li
+                key={p.n}
+                className={`reveal ${styles.processItem}`}
+                style={{ '--delay': `${i * 120}ms` }}
+              >
+                <span className={styles.processNum}>{parseInt(p.n, 10)}</span>
+                <div>
+                  <h3 className={styles.processStepTitle}>{p.title}</h3>
+                  <p className={styles.processStepText}>{p.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Atelier / custom CTA */}
+      <section className={styles.atelier}>
+        <div className={styles.atelierImageWrap}>
+          <div
+            className={`${styles.atelierImage} kenburns`}
+            style={{ backgroundImage: `url(${ATELIER_IMAGE})` }}
+          />
+          <div className={styles.atelierTint} />
+        </div>
+        <div className={styles.atelierCard}>
+          <span className="reveal smallcaps">Visit the Atelier</span>
+          <h2 className={`reveal ${styles.atelierTitle}`} style={{ '--delay': '120ms' }}>
+            Have something <em>specific</em> in mind?
+          </h2>
+          <p className={`reveal ${styles.atelierBody}`} style={{ '--delay': '240ms' }}>
+            We accept a small number of custom commissions each season — dining tables, beds, built-ins. Send us a sketch, a photograph you&rsquo;ve been carrying, or just a paragraph. We&rsquo;ll write back.
+          </p>
+          <a href="mailto:brianandbeam@gmail.com" className={`reveal ${styles.atelierLink}`} style={{ '--delay': '360ms' }}>
+            <span>brianandbeam@gmail.com</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className={styles.footer}>
-        <p>&copy; 2024 Briar & Beam. Handmade with intention.</p>
-        <p>
-          <a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a> ·
-          <a href="#">About</a> ·
-          <a href="#">Sustainability</a>
-        </p>
+        <div className={styles.footerHero}>
+          <span className={styles.footerWordmark}>
+            Briar <em>&amp;</em> Beam
+          </span>
+        </div>
+
+        <div className={styles.footerCols}>
+          <div>
+            <span className="smallcaps">Collection</span>
+            <ul>
+              {products.slice(0, 5).map((p) => (
+                <li key={p.id}><Link href={`/products/${p.id}`}>{p.name}</Link></li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <span className="smallcaps">Atelier</span>
+            <ul>
+              <li><Link href="/about">About</Link></li>
+              <li><a href="mailto:brianandbeam@gmail.com">Custom Work</a></li>
+              <li><Link href="/shipping">Shipping</Link></li>
+              <li><Link href="/returns">Returns</Link></li>
+            </ul>
+          </div>
+          <div>
+            <span className="smallcaps">Contact</span>
+            <ul>
+              <li><a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a></li>
+              <li>By appointment</li>
+            </ul>
+          </div>
+          <div>
+            <span className="smallcaps">Fine Print</span>
+            <ul>
+              <li><Link href="/privacy">Privacy</Link></li>
+              <li><Link href="/terms">Terms</Link></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className={styles.colophon}>
+          <span>&copy; 2026 Briar &amp; Beam</span>
+          <span>Made by hand</span>
+        </div>
       </footer>
+
+      {/* Order pad (cart) */}
+      <div
+        className={`${styles.cartScrim} ${cartOpen ? styles.cartScrimOpen : ''}`}
+        onClick={() => setCartOpen(false)}
+      />
+      <aside className={`${styles.cart} ${cartOpen ? styles.cartOpen : ''}`} aria-hidden={!cartOpen}>
+        <div className={styles.cartHeader}>
+          <span className="smallcaps">Cart</span>
+          <button className={styles.cartClose} onClick={() => setCartOpen(false)} aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+
+        {cart.length === 0 ? (
+          <div className={styles.cartEmpty}>
+            <p className={styles.cartEmptyTitle}><em>Your cart is empty.</em></p>
+            <p className={styles.cartEmptyBody}>Browse the collection to add a piece.</p>
+          </div>
+        ) : (
+          <>
+            <ul className={styles.cartItems}>
+              {cart.map((item) => (
+                <li key={item.id} className={styles.cartItem}>
+                  <div className={styles.cartItemTop}>
+                    <span className={styles.cartItemName}><em>{item.name}</em></span>
+                    <span className="mono">${(item.price * item.quantity).toLocaleString()}</span>
+                  </div>
+                  <div className={styles.cartItemBottom}>
+                    <div className={styles.qty}>
+                      <button onClick={() => updateQty(item.id, -1)} aria-label="Decrease">−</button>
+                      <span className="mono">{item.quantity.toString().padStart(2, '0')}</span>
+                      <button onClick={() => updateQty(item.id, 1)} aria-label="Increase">+</button>
+                    </div>
+                    <button className={styles.cartRemove} onClick={() => removeFromCart(item.id)}>
+                      <span className="smallcaps">Remove</span>
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className={styles.cartFooter}>
+              <div className={styles.cartTotal}>
+                <span className="smallcaps">Subtotal</span>
+                <span className={`${styles.cartTotalAmt} mono`}>${total.toLocaleString()}</span>
+              </div>
+              <button className={styles.cartReserve}>
+                <span className="smallcaps">Checkout</span>
+                <span aria-hidden="true">&rarr;</span>
+              </button>
+              <p className={styles.cartNote}>
+                Each piece is made to order. Lead time 3–6 weeks.
+              </p>
+            </div>
+          </>
+        )}
+      </aside>
     </div>
   );
 }

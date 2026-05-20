@@ -1,7 +1,9 @@
 import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Head from 'next/head';
 import { products } from '../../data/products';
 import styles from '../../styles/ProductDetail.module.css';
-import { useState } from 'react';
 
 export default function ProductDetail() {
   const router = useRouter();
@@ -9,22 +11,63 @@ export default function ProductDetail() {
   const [quantity, setQuantity] = useState(1);
   const [selectedWood, setSelectedWood] = useState(0);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [added, setAdded] = useState(false);
 
-  if (!router.isReady) {
-    return null;
-  }
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement;
+      const total = h.scrollHeight - h.clientHeight;
+      setProgress(total > 0 ? h.scrollTop / total : 0);
+      setScrolled(h.scrollTop > 60);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-  const product = products.find(p => p.id === parseInt(id));
+  useEffect(() => {
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-in');
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.05 }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [id]);
 
+  if (!router.isReady) return null;
+
+  const product = products.find((p) => p.id === parseInt(id));
   if (!product) {
-    return <div className={styles.notFound}>Product not found</div>;
+    return (
+      <div className={styles.notFound}>
+        <p className="smallcaps">N&deg;. 404 — Not Found</p>
+        <h1><em>This piece is not in our ledger.</em></h1>
+        <Link href="/" className={styles.notFoundLink}>Return to the Collection &rarr;</Link>
+      </div>
+    );
   }
+
+  const productIndex = products.findIndex((p) => p.id === product.id) + 1;
+  const num = productIndex.toString().padStart(2, '0');
+
+  const adjustedPrice = product.price + (product.woodOptions?.[selectedWood]?.priceAdjust || 0);
+  const images = product.images || [product.image];
 
   const handleAddToCart = () => {
     const cart = JSON.parse(localStorage.getItem('briarBeamCart')) || [];
     const wood = product.woodOptions?.[selectedWood]?.name || '';
     const cartId = `${product.id}-${wood}`;
-    const existing = cart.find(item => item.cartId === cartId);
+    const existing = cart.find((item) => item.cartId === cartId);
 
     if (existing) {
       existing.quantity += quantity;
@@ -33,107 +76,224 @@ export default function ProductDetail() {
         ...product,
         cartId,
         selectedWood: wood,
-        price: product.price + (product.woodOptions?.[selectedWood]?.priceAdjust || 0),
-        quantity
+        price: adjustedPrice,
+        quantity,
       });
     }
 
     localStorage.setItem('briarBeamCart', JSON.stringify(cart));
-    alert(`${product.name} added to cart!`);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2400);
     setQuantity(1);
   };
 
+  const otherProducts = products.filter((p) => p.id !== product.id).slice(0, 3);
+  const description = product.description || '';
+  const firstSentenceMatch = description.match(/^(.+?[.!?])\s/);
+  const pullquote = firstSentenceMatch ? firstSentenceMatch[1] : description.slice(0, 110);
+  const restDescription = firstSentenceMatch ? description.slice(firstSentenceMatch[0].length) : '';
+
   return (
     <div className={styles.container}>
-      {/* Header */}
-      <header className={styles.header}>
-        <div className={styles.logo}>
-          <button onClick={() => router.push('/')}>← Back to Shop</button>
-          <h1>Briar & Beam</h1>
+      <Head>
+        <title>{product.name} — Briar &amp; Beam</title>
+        <meta name="description" content={product.description.slice(0, 160)} />
+      </Head>
+
+      <div className={styles.progress} style={{ transform: `scaleX(${progress})` }} />
+
+      <header className={`${styles.header} ${scrolled ? styles.headerSolid : ''}`}>
+        <div className={styles.headerInner}>
+          <Link href="/" className={styles.wordmark}>
+            <span>Briar</span>
+            <span className={styles.wordmarkAmp}>&amp;</span>
+            <span>Beam</span>
+          </Link>
+          <nav className={styles.nav}>
+            <Link href="/">Collection</Link>
+            <Link href="/about">Atelier</Link>
+            <a href="mailto:brianandbeam@gmail.com">Inquire</a>
+            <Link href="/" className={styles.back}>
+              <span aria-hidden="true">&larr;</span>
+              <span>Back</span>
+            </Link>
+          </nav>
         </div>
       </header>
 
-      {/* Product Detail */}
-      <div className={styles.productDetail}>
-        <div className={styles.imageSection}>
-          <div
-            className={styles.mainImage}
-            style={{ backgroundImage: `url(${(product.images || [product.image])[selectedImage]})` }}
-          ></div>
-          {product.images && (
-            <div className={styles.thumbnailStrip}>
-              {product.images.map((img, idx) => (
-                <div
-                  key={idx}
-                  className={`${styles.thumbnail} ${idx === selectedImage ? styles.thumbnailActive : ''}`}
-                  style={{ backgroundImage: `url(${img})` }}
-                  onClick={() => setSelectedImage(idx)}
-                />
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div className={styles.infoSection}>
-          <p className={styles.category}>{product.category}</p>
-          <h1 className={styles.productName}>{product.name}</h1>
-          <p className={styles.price}>
-            ${(product.price + (product.woodOptions?.[selectedWood]?.priceAdjust || 0)).toLocaleString()}
-          </p>
-
-          <p className={styles.description}>{product.description}</p>
-
-          <div className={styles.details}>
-            <h3>Specifications</h3>
-            <ul>
-              {product.details.map((detail, idx) => (
-                <li key={idx}>{detail}</li>
-              ))}
-            </ul>
+      <main className={styles.spread}>
+        {/* Left column — image gallery */}
+        <section className={styles.gallery}>
+          <div className={styles.mainImageWrap}>
+            <div
+              key={selectedImage}
+              className={styles.mainImage}
+              style={{ backgroundImage: `url(${images[selectedImage]})` }}
+            />
+            <span className={styles.imgIndex}>
+              {selectedImage + 1} / {images.length}
+            </span>
           </div>
 
-          <div className={styles.actions}>
-            {product.woodOptions && (
-              <div className={styles.woodSelect}>
-                <label>Wood:</label>
-                <select
-                  value={selectedWood}
-                  onChange={(e) => setSelectedWood(Number(e.target.value))}
-                >
-                  {product.woodOptions.map((option, idx) => (
-                    <option key={idx} value={idx}>
-                      {option.name}{option.priceAdjust > 0 ? ` (+$${option.priceAdjust})` : ''}
-                    </option>
-                  ))}
-                </select>
-              </div>
+          <div className={styles.thumbStrip}>
+            {images.map((img, idx) => (
+              <button
+                key={idx}
+                className={`${styles.thumb} ${idx === selectedImage ? styles.thumbActive : ''}`}
+                onClick={() => setSelectedImage(idx)}
+                aria-label={`View image ${idx + 1}`}
+              >
+                <span style={{ backgroundImage: `url(${img})` }} />
+              </button>
+            ))}
+          </div>
+        </section>
+
+        {/* Right column — editorial */}
+        <section className={styles.editorial}>
+          <div className={styles.editorialInner}>
+            <div className="reveal">
+              <p className={styles.eyebrow}>
+                {product.category}
+              </p>
+              <h1 className={styles.title}>
+                <em>{product.name}</em>
+              </h1>
+            </div>
+
+            <div className={`reveal ${styles.priceRow}`} style={{ '--delay': '120ms' }}>
+              <span className={styles.price}>${adjustedPrice.toLocaleString()}</span>
+              <span className={styles.priceNote}><em>USD &middot; ships in 3–6 weeks</em></span>
+            </div>
+
+            <p className={`reveal ${styles.pullquote}`} style={{ '--delay': '200ms' }}>
+              <span className={styles.openQuote}>&ldquo;</span>
+              {pullquote}
+            </p>
+
+            {restDescription && (
+              <p className={`reveal ${styles.body}`} style={{ '--delay': '280ms' }}>
+                {restDescription}
+              </p>
             )}
 
-            <div className={styles.quantityControl}>
-              <label>Quantity:</label>
-              <div className={styles.quantityButtons}>
-                <button onClick={() => setQuantity(Math.max(1, quantity - 1))}>−</button>
-                <span>{quantity}</span>
-                <button onClick={() => setQuantity(quantity + 1)}>+</button>
-              </div>
+            <div className={`reveal ${styles.specs}`} style={{ '--delay': '360ms' }}>
+              <p className="smallcaps">Specifications</p>
+              <ul>
+                {product.details.map((d, i) => {
+                  const [label, ...rest] = d.split(':');
+                  const value = rest.join(':').trim();
+                  return (
+                    <li key={i}>
+                      <span className={styles.specLabel}>{label}</span>
+                      {value && <span className={styles.specValue}>{value}</span>}
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
 
-            <button className={styles.addToCartBtn} onClick={handleAddToCart}>
-              Add to Cart
-            </button>
-          </div>
+            <div className={`reveal ${styles.actions}`} style={{ '--delay': '440ms' }}>
+              {product.woodOptions && product.woodOptions.length > 1 && (
+                <div className={styles.woodGroup}>
+                  <p className="smallcaps">Wood</p>
+                  <div className={styles.woodOptions}>
+                    {product.woodOptions.map((opt, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setSelectedWood(idx)}
+                        className={`${styles.woodOption} ${idx === selectedWood ? styles.woodOptionActive : ''}`}
+                      >
+                        <span><em>{opt.name}</em></span>
+                        {opt.priceAdjust > 0 && (
+                          <span className={`${styles.woodAdjust} mono`}>+${opt.priceAdjust}</span>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
 
-          <div className={styles.shipping}>
-            <p><strong>Shipping:</strong> Calculated at checkout</p>
-            <p><strong>Returns:</strong> No returns unless damaged</p>
-            <p><strong>Questions?</strong> <a href="mailto:brianandbeam@gmail.com">Contact us</a></p>
+              <div className={styles.qtyRow}>
+                <p className="smallcaps">Quantity</p>
+                <div className={styles.qtyCtl}>
+                  <button onClick={() => setQuantity(Math.max(1, quantity - 1))} aria-label="Decrease">−</button>
+                  <span className="mono">{quantity.toString().padStart(2, '0')}</span>
+                  <button onClick={() => setQuantity(quantity + 1)} aria-label="Increase">+</button>
+                </div>
+              </div>
+
+              <button
+                className={`${styles.reserveBtn} ${added ? styles.reserveBtnAdded : ''}`}
+                onClick={handleAddToCart}
+                disabled={adjustedPrice === 0}
+              >
+                <span className="smallcaps">
+                  {adjustedPrice === 0 ? 'Inquire for pricing' : added ? 'Added to cart' : 'Add to cart'}
+                </span>
+                <span className={styles.reserveArrow} aria-hidden="true">&rarr;</span>
+              </button>
+            </div>
+
+            <div className={`reveal ${styles.fineprint}`} style={{ '--delay': '520ms' }}>
+              <div>
+                <p className="smallcaps">Lead time</p>
+                <p>3–6 weeks, made to order in our workshop.</p>
+              </div>
+              <div>
+                <p className="smallcaps">Shipping</p>
+                <p>White-glove delivery, calculated at checkout.</p>
+              </div>
+              <div>
+                <p className="smallcaps">Returns</p>
+                <p>No returns unless damaged in transit.</p>
+              </div>
+              <div>
+                <p className="smallcaps">Custom</p>
+                <p>
+                  <a href="mailto:brianandbeam@gmail.com">Inquire about a custom version &rarr;</a>
+                </p>
+              </div>
+            </div>
           </div>
+        </section>
+      </main>
+
+      {/* Related */}
+      <section className={styles.related}>
+        <div className={styles.relatedHeader}>
+          <span className="reveal smallcaps">More Pieces</span>
+          <h2 className={`reveal ${styles.relatedTitle}`} style={{ '--delay': '120ms' }}>
+            From the <em>Collection</em>
+          </h2>
         </div>
-      </div>
 
-      {/* Footer */}
+        <div className={styles.relatedGrid}>
+          {otherProducts.map((p, i) => (
+            <Link
+              key={p.id}
+              href={`/products/${p.id}`}
+              className={`reveal ${styles.relatedCard}`}
+              style={{ '--delay': `${i * 80}ms` }}
+            >
+              <div className={styles.relatedImageWrap}>
+                <div className={styles.relatedImage} style={{ backgroundImage: `url(${p.image})` }} />
+              </div>
+              <div className={styles.relatedMeta}>
+                <h3><em>{p.name}</em></h3>
+                <p className={styles.relatedCategory}>{p.category}</p>
+                <span className={styles.relatedPrice}>
+                  {p.price > 0 ? `$${p.price.toLocaleString()}` : 'Inquire'}
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <footer className={styles.footer}>
-        <p>&copy; 2024 Briar & Beam. Handmade with intention.</p>
+        <span>&copy; 2026 Briar &amp; Beam &middot; Made by hand</span>
+        <span><a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a></span>
       </footer>
     </div>
   );

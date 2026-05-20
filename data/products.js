@@ -13,7 +13,7 @@ export const products = [
       'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop'
     ],
     category: 'Dining',
-    description: 'Built for long dinners and late mornings, The Eloise is a French farmhouse table reimagined for the way we actually live. Solid white oak, matte finish, room for six — and all the stories that come with them.',
+    description: 'Built for long dinners and the late mornings that follow. A solid white oak dining table with room for six, a matte hand-rubbed finish, edges softened just enough to invite a hand. Made to hold a family and the stories it gathers, for as long as you\'ll have it.',
     woodOptions: [
       { name: 'White Oak', priceAdjust: 0 },
       { name: 'Walnut', priceAdjust: 200 }
@@ -40,7 +40,7 @@ export const products = [
       '/images/LIVIA TABLE.jpg'
     ],
     category: 'Side Table',
-    description: 'The Livia was inspired by a small nightstand I discovered at the Brocante d\'Annecy. I fell in love with its scalloped edges but couldn\'t afford to buy it, let alone ship it across the world. So I stored that beautiful little table in the folds of my heart — and today, I\'ve reimagined it for you.',
+    description: 'A small side table drawn from memory — scalloped edges I once fell in love with and never forgot. The Livia is a quiet thing, small enough for a bedside and beautiful enough to live in any room of the house. Built in solid walnut to last well past a single lifetime.',
     woodOptions: [
       { name: 'White Oak', priceAdjust: 0 },
       { name: 'Walnut', priceAdjust: 0 }
@@ -55,7 +55,7 @@ export const products = [
   },
   {
     id: 3,
-    name: 'The Deux',
+    name: 'The Alexia',
     price: 1200,
     image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
     images: [
@@ -67,7 +67,7 @@ export const products = [
       'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop'
     ],
     category: 'Nesting Tables',
-    description: 'We wanted something less predictable than an end table — something flirty and fun. The Deux was born because sometimes two is better than one. Nestle them beside a couch or tuck them together as a nightstand.',
+    description: 'Something less predictable than an end table — a pair, because sometimes two is better than one. The Alexia nestles beside a couch or tucks together as a nightstand. Quiet, considered, and a little unexpected.',
     woodOptions: [
       { name: 'White Oak', priceAdjust: 0 },
       { name: 'Walnut', priceAdjust: 200 }
@@ -96,7 +96,7 @@ export const products = [
       'https://images.unsplash.com/photo-1577808840935-c00414ecd12d?w=700&h=500&fit=crop'
     ],
     category: 'Coffee Table',
-    description: 'We found The Julien in a sketch — a low, simple table drawn in the margin of a French carpenter\'s notebook. No ornamentation, just proportion and purpose. We built him in solid walnut with traditional joinery because some things don\'t need reinventing.',
+    description: 'The Julien began as a margin sketch in an old carpenter\'s notebook — a low, simple table with no ornamentation, only proportion and purpose. Built in solid walnut with traditional joinery, made for a long life of being lived around.',
     woodOptions: [
       { name: 'White Oak', priceAdjust: 0 },
       { name: 'Walnut', priceAdjust: 0 }
@@ -114,17 +114,13 @@ export const products = [
     id: 5,
     name: 'The Jack',
     price: 4000,
-    image: 'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=700&h=500&fit=crop',
+    image: '/images/jack/jack-hero.jpg',
     images: [
-      'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=700&h=500&fit=crop'
+      '/images/jack/jack-hero.jpg',
+      '/images/jack/jack-detail.jpg'
     ],
     category: 'Coffee Table',
-    description: 'Every French farmhouse has a table like this — the one that holds everything together. The Jack was built with six generous drawers because life collects things worth keeping. Hand-built in oak with the kind of quiet character that only gets better with age, she\'s as elegant as she is hardworking.',
+    description: 'A table that lives at the center of a house. Built to carry the weight of a family — dinners and dance parties, the small thunder of children\'s feet, the slow afternoons that go on too long. Six generous drawers for the things worth keeping. Hand-built in solid oak with the kind of quiet character that only deepens with age.',
     woodOptions: [
       { name: 'White Oak', priceAdjust: 0 },
       { name: 'Walnut', priceAdjust: 0 }
@@ -166,7 +162,7 @@ export const products = [
   },
   {
     id: 7,
-    name: 'The Simone',
+    name: 'The Kate',
     price: 0,
     image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
     images: [
@@ -178,7 +174,7 @@ export const products = [
       'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop'
     ],
     category: 'Console',
-    description: 'The Simone is for the space you always mean to do something with. That bare wall in the entryway, that stretch of hallway that feels too empty. She\'s a modern farmhouse console with the kind of presence that makes a room feel like someone thought about it — because you did.',
+    description: 'The Kate is for the space you always mean to do something with. That bare wall in the entryway, that stretch of hallway that feels too empty. A console with the kind of quiet presence that makes a room feel like someone thought about it — because you did.',
     woodOptions: [
       { name: 'White Oak', priceAdjust: 0 },
       { name: 'Walnut', priceAdjust: 0 }

@@ -1,129 +1,204 @@
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import styles from '../styles/About.module.css';
 
+const HERO_IMAGE = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=2400&q=85&auto=format&fit=crop';
+const PORTRAIT_IMAGE = 'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=1400&q=85&auto=format&fit=crop';
+
 export default function About() {
+  const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement;
+      const total = h.scrollHeight - h.clientHeight;
+      setProgress(total > 0 ? h.scrollTop / total : 0);
+      setScrolled(h.scrollTop > 60);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-in');
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.05 }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
     <div className={styles.container}>
-      {/* Header */}
-      <header className={styles.header}>
-        <div className={styles.logo}>
-          <Link href="/">
-            <h1>Briar & Beam</h1>
+      <Head>
+        <title>The Atelier — Briar &amp; Beam</title>
+      </Head>
+
+      <div className={styles.progress} style={{ transform: `scaleX(${progress})` }} />
+
+      <header className={`${styles.header} ${scrolled ? styles.headerSolid : ''}`}>
+        <div className={styles.headerInner}>
+          <Link href="/" className={styles.wordmark}>
+            <span>Briar</span>
+            <span className={styles.wordmarkAmp}>&amp;</span>
+            <span>Beam</span>
           </Link>
+          <nav className={styles.nav}>
+            <Link href="/">Collection</Link>
+            <a href="#story">Atelier</a>
+            <a href="mailto:brianandbeam@gmail.com">Inquire</a>
+          </nav>
         </div>
-        <nav className={styles.nav}>
-          <Link href="/">Shop</Link>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </nav>
       </header>
 
-      {/* Hero */}
-      <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <div className={styles.heroText}>
-            <h2>Furniture That Tells a Story</h2>
-            <p>Every piece of wood has lived. It grew in a forest for decades, weathered seasons, absorbed sunlight. In our hands, that story continues. We transform it into furniture handcrafted with intention&mdash;pieces designed to be touched, lived with, and passed down. Quality isn&apos;t hidden in our work; it&apos;s in every joint, every grain, every finish. Furniture that&apos;s beautiful inside and out. Heirloom pieces. Not for this moment, but for a lifetime.</p>
-          </div>
-          <div className={styles.heroImage}>
-            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=700&fit=crop" alt="Handcrafted wooden furniture" />
-          </div>
+      {/* Cover */}
+      <section className={styles.cover}>
+        <div className={styles.coverImageWrap}>
+          <div
+            className={`${styles.coverImage} kenburns`}
+            style={{ backgroundImage: `url(${HERO_IMAGE})` }}
+          />
+          <div className={styles.coverTint} />
+        </div>
+        <div className={styles.coverGrid}>
+          <span className="rise smallcaps" style={{ '--delay': '300ms' }}>Our Story</span>
+          <h1 className={styles.coverTitle}>
+            <span className="rise" style={{ '--delay': '500ms' }}>Furniture that</span>
+            <span className="rise italic-display" style={{ '--delay': '700ms' }}>tells a story.</span>
+          </h1>
+          <p className={`rise ${styles.coverDek}`} style={{ '--delay': '950ms' }}>
+            A small workshop. Two people, hardwoods, hand tools, and one piece at a time.
+          </p>
         </div>
       </section>
 
-      {/* Our Story */}
-      <main className={styles.main}>
-        <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>Our Story</h3>
-          <p className={styles.sectionText}>
-            For most of my life, I lived with furniture that felt temporary. IKEA when money was tight. Pottery Barn when I could stretch the budget. Pieces that looked fine in the store but never quite felt like mine &mdash; like they were just holding space until something better came along. I always assumed that something better was simply out of reach.
-          </p>
-          <p className={styles.sectionText}>
-            What I really wanted was to be surrounded by beauty. Not just objects that filled a room, but pieces that felt alive &mdash; that had weight and warmth and a story. Furniture my children would want in their own homes one day. Things that would outlast me and carry something of our family forward.
-          </p>
-          <p className={styles.sectionText}>
-            Then I met Ronny.
-          </p>
-          <p className={styles.sectionText}>
-            Ronny is a carpenter of rare talent &mdash; someone who understands wood the way a musician understands sound. I had sketches and dreams; he had the hands and the knowledge to bring them to life. Together we built the pieces I had spent decades imagining. A dining table that made me want to host every dinner party. A console that stopped me in my tracks every time I walked past it. Furniture that finally felt like it belonged.
-          </p>
-          <p className={styles.sectionText}>
-            After a few pieces, we looked at each other and knew: we couldn&apos;t keep this to ourselves. If I had spent my whole life wanting this and not knowing where to find it, so had a lot of other people. That&apos;s why Briar &amp; Beam exists &mdash; to bring the joy of truly beautiful, lasting furniture to the people who have always deserved it.
-          </p>
-        </section>
+      {/* Editorial standfirst */}
+      <section className={styles.standfirst}>
+        <span className="reveal smallcaps">An Introduction</span>
+        <p className={`reveal ${styles.standfirstText}`} style={{ '--delay': '120ms' }}>
+          <em>Every piece of wood has lived.</em> It grew in a forest for decades — weathered seasons, absorbed sunlight, held birds. In our hands, that story continues. We turn it into furniture handcrafted with intention: pieces designed to be touched, lived with, and passed down. Quality isn&rsquo;t hidden in our work; it&rsquo;s in every joint, every grain, every finish. Heirloom pieces. Not for this moment, but for a lifetime.
+        </p>
+      </section>
 
-        <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>A Different Way</h3>
-          <p className={styles.sectionText}>
-            We live in a culture that celebrates speed, scale, and savings. Buy now, replace later. Mass-produce, cut corners, move on to the next thing. Most furniture today is designed with an invisible expiration date&mdash;engineered to be affordable and disposable, not to endure.
-          </p>
-          <p className={styles.sectionText}>
-            But something shifts when you own a piece made to last. A table built with mortise-and-tenon joinery doesn&apos;t just hold your meals&mdash;it becomes part of your home&apos;s story. A console made from solid walnut doesn&apos;t just store your keys&mdash;it grows more beautiful as it ages. Quality furniture isn&apos;t a luxury; it&apos;s a rebellion against waste.
-          </p>
-          <p className={styles.sectionText}>
-            We&apos;ve chosen a harder path. Slower. More expensive upfront. But infinitely more worthwhile.
-          </p>
-        </section>
+      {/* Two-column origin story with portrait */}
+      <article id="story" className={styles.feature}>
+        <aside className={styles.featureImage}>
+          <div className={`reveal ${styles.featureImageInner}`} style={{ backgroundImage: `url(${PORTRAIT_IMAGE})` }} />
+          <span className={`reveal ${styles.imageCaption}`} style={{ '--delay': '160ms' }}>
+            The shop.
+          </span>
+        </aside>
 
-        <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>Our Philosophy</h3>
-          <div className={styles.philosophy}>
-            <div className={styles.philosophyItem}>
-              <h4>Craft Over Convenience</h4>
-              <p>We prioritize quality and longevity over speed. Each piece takes weeks to complete, allowing us to perfect every detail and ensure structural integrity that lasts generations.</p>
+        <div className={styles.featureText}>
+          <span className="reveal smallcaps">Our Story</span>
+          <h2 className={`reveal ${styles.featureTitle}`} style={{ '--delay': '120ms' }}>
+            For most of my life, I lived with furniture that felt <em>temporary.</em>
+          </h2>
+          <div className={`reveal ${styles.featureBody}`} style={{ '--delay': '240ms' }}>
+            <p>IKEA when money was tight. Pottery Barn when I could stretch the budget. Pieces that looked fine in the store but never quite felt like mine — like they were just holding space until something better came along. I always assumed that something better was simply out of reach.</p>
+            <p>What I really wanted was to be surrounded by beauty. Not just objects that filled a room, but pieces that felt alive — that had weight and warmth and a story. Furniture my children would want in their own homes one day. Things that would outlast me and carry something of our family forward.</p>
+            <p className={styles.bigStatement}><em>Then I met Augustin.</em></p>
+            <p>Augustin is a carpenter of rare talent — someone who understands wood the way a musician understands sound. I had sketches and dreams; he had the hands and the knowledge to bring them to life. Together we built the pieces I had spent decades imagining. A dining table that made me want to host every dinner party. A console that stopped me in my tracks every time I walked past it.</p>
+            <p>After a few pieces, we looked at each other and knew: we couldn&rsquo;t keep this to ourselves. Briar &amp; Beam exists to bring the joy of truly beautiful, lasting furniture to the people who have always deserved it.</p>
+          </div>
+        </div>
+      </article>
+
+      {/* Pull quote */}
+      <section className={styles.pullquote}>
+        <p className="reveal">
+          <span className={styles.openQuote}>&ldquo;</span>
+          The most sustainable piece of furniture is the one <em>you never replace.</em>
+        </p>
+      </section>
+
+      {/* Philosophy as numbered manifesto */}
+      <section className={styles.manifesto}>
+        <div className={styles.manifestoHeader}>
+          <span className="reveal smallcaps">Our Philosophy</span>
+          <h2 className={`reveal ${styles.manifestoTitle}`} style={{ '--delay': '120ms' }}>
+            A different way.
+          </h2>
+        </div>
+
+        <ol className={styles.manifestoList}>
+          <li className="reveal" style={{ '--delay': '0ms' }}>
+            <div>
+              <h3>Craft over convenience.</h3>
+              <p>We prioritize quality and longevity over speed. Each piece takes weeks to complete. That&rsquo;s how long it takes to do it right.</p>
             </div>
-            <div className={styles.philosophyItem}>
-              <h4>Material Honesty</h4>
+          </li>
+          <li className="reveal" style={{ '--delay': '120ms' }}>
+            <div>
+              <h3>Material honesty.</h3>
               <p>We celebrate the natural beauty of wood. No veneer, no shortcuts. You see the real grain, feel the real finish, and own something genuinely handmade by people who care.</p>
             </div>
-            <div className={styles.philosophyItem}>
-              <h4>Timeless Design</h4>
-              <p>Our pieces don&apos;t follow trends. They&apos;re designed to feel current today and classic in fifty years&mdash;furniture that transcends seasons and styles and actually improves with age.</p>
+          </li>
+          <li className="reveal" style={{ '--delay': '240ms' }}>
+            <div>
+              <h3>Timeless design.</h3>
+              <p>Our pieces don&rsquo;t follow trends. They&rsquo;re designed to feel current today and classic in fifty years — furniture that transcends seasons and improves with age.</p>
             </div>
-          </div>
-        </section>
+          </li>
+          <li className="reveal" style={{ '--delay': '360ms' }}>
+            <div>
+              <h3>Slowness as a feature.</h3>
+              <p>Lead times of three to six weeks aren&rsquo;t a constraint — they&rsquo;re the method. Each piece is built front to back by the same pair of hands.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
 
-        <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>The Process</h3>
-          <p className={styles.sectionText}>
-            From selection to delivery, every step matters. We begin by choosing wood that speaks to us&mdash;examining grain patterns, checking for stability, and envisioning the finished piece. Hand-joinery comes next: mortise and tenon joints, dovetails, and traditional techniques that create strength without fasteners.
+      {/* Sustainability colophon */}
+      <section className={styles.coda}>
+        <div className={styles.codaInner}>
+          <span className="reveal smallcaps">Sustainability &amp; Ethics</span>
+          <p className="reveal" style={{ '--delay': '120ms' }}>
+            True sustainability isn&rsquo;t about green marketing — it&rsquo;s about making things worth keeping. Our wood comes from FSC-certified suppliers. Offcuts become smaller pieces or return to the earth. We ship in recyclable packaging.
           </p>
-          <p className={styles.sectionText}>
-            Finishing is where wood truly comes alive. We use hand-applied oils and waxes that enhance the natural color while protecting the surface. The result is furniture with warmth and character&mdash;not a uniform, factory shine, but the authentic patina of a well-made thing.
+          <p className="reveal" style={{ '--delay': '240ms' }}>
+            But our biggest commitment is the simplest: we make things that last. By choosing Briar &amp; Beam, you&rsquo;re not just buying a table — you&rsquo;re voting for a world where quality and longevity are valued over convenience and disposal.
           </p>
-          <p className={styles.sectionText}>
-            Lead times vary by piece, typically 3&ndash;6 weeks. This isn&apos;t a drawback&mdash;it&apos;s a feature. We build to order, ensuring each piece is crafted with focus and care, just for you.
-          </p>
-        </section>
+        </div>
+      </section>
 
-        <section className={styles.section}>
-          <h3 className={styles.sectionTitle}>Sustainability &amp; Ethics</h3>
-          <p className={styles.sectionText}>
-            True sustainability isn&apos;t about green marketing&mdash;it&apos;s about making things worth keeping. We&apos;re committed to responsible forestry and minimal waste. Our wood suppliers are certified and share our values. Offcuts become smaller pieces or return to the earth. We ship in recyclable packaging and work with carbon-conscious logistics partners.
-          </p>
-          <p className={styles.sectionText}>
-            But our biggest environmental commitment is the simplest: we make things that last. The most sustainable piece of furniture is the one you never replace. By choosing Briar &amp; Beam, you&apos;re not just buying a table&mdash;you&apos;re voting for a world where quality and longevity are valued over convenience and disposal.
-          </p>
-        </section>
+      {/* CTA */}
+      <section className={styles.cta}>
+        <span className="reveal smallcaps">Visit the Collection</span>
+        <h2 className={`reveal ${styles.ctaTitle}`} style={{ '--delay': '120ms' }}>
+          Ready to bring a piece <em>home?</em>
+        </h2>
+        <div className={`reveal ${styles.ctaActions}`} style={{ '--delay': '240ms' }}>
+          <Link href="/" className={styles.ctaPrimary}>
+            <span className="smallcaps">View the Collection</span>
+            <span aria-hidden="true">&rarr;</span>
+          </Link>
+          <a href="mailto:brianandbeam@gmail.com" className={styles.ctaSecondary}>
+            <span className="smallcaps">Inquire about custom work</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </section>
 
-        <section className={styles.cta}>
-          <h3>Ready to Bring Home a Piece of Briar &amp; Beam?</h3>
-          <p>Browse our collection or get in touch to discuss a custom piece.</p>
-          <div className={styles.ctaButtons}>
-            <Link href="/" className={styles.button}>Shop Now</Link>
-            <a href="mailto:brianandbeam@gmail.com" className={styles.button + ' ' + styles.secondary}>Get in Touch</a>
-          </div>
-        </section>
-      </main>
-
-      {/* Footer */}
       <footer className={styles.footer}>
-        <p>&copy; 2024 Briar & Beam. Handmade with intention.</p>
-        <p>
-          <a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a> ·
-          <Link href="/about">About</Link> ·
-          <a href="#sustainability">Sustainability</a>
-        </p>
+        <span>&copy; 2026 Briar &amp; Beam &middot; Made by hand</span>
+        <span>
+          <Link href="/shipping">Shipping</Link> &middot;
+          <Link href="/returns"> Returns</Link> &middot;
+          <Link href="/privacy"> Privacy</Link> &middot;
+          <Link href="/terms"> Terms</Link>
+        </span>
       </footer>
     </div>
   );
