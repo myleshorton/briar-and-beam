@@ -3,8 +3,8 @@ import Link from 'next/link';
 import Head from 'next/head';
 import styles from '../styles/About.module.css';
 
-const HERO_IMAGE = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=2400&q=85&auto=format&fit=crop';
-const PORTRAIT_IMAGE = 'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=1400&q=85&auto=format&fit=crop';
+const HERO_IMAGE = '/images/atelier/makers-wide.jpg';
+const PORTRAIT_IMAGE = '/images/atelier/makers-portrait.jpg';
 
 export default function About() {
   const [scrolled, setScrolled] = useState(false);

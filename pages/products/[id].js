@@ -291,7 +291,7 @@ export default function ProductDetail() {
               style={{ '--delay': `${i * 80}ms` }}
             >
               <div className={styles.relatedImageWrap}>
-                <div className={styles.relatedImage} style={{ backgroundImage: `url(${p.image})`, backgroundPosition: p.imagePosition || 'center' }} />
+                <div className={styles.relatedImage} style={{ backgroundImage: `url(${p.image})`, backgroundPosition: p.imagePosition || 'center', backgroundSize: p.variants ? 'contain' : undefined, backgroundRepeat: p.variants ? 'no-repeat' : undefined, backgroundColor: p.variants ? 'var(--paper-deep)' : undefined }} />
               </div>
               <div className={styles.relatedMeta}>
                 <h3><em>{p.name}</em></h3>

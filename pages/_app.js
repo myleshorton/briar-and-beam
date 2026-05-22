@@ -1,5 +1,6 @@
 import '../styles/globals.css';
 import { Fraunces, EB_Garamond } from 'next/font/google';
+import Splash from '../components/Splash';
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -20,6 +21,7 @@ const garamond = EB_Garamond({
 export default function App({ Component, pageProps }) {
   return (
     <div className={`${fraunces.variable} ${garamond.variable}`} style={{ minHeight: '100vh' }}>
+      <Splash />
       <Component {...pageProps} />
     </div>
   );

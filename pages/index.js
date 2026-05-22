@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css';
 import { products } from '../data/products';
 
 const HERO_IMAGE = 'https://roselandusa.com/cdn/shop/files/Homepage-hero-DT.jpg?v=1759406164';
-const ATELIER_IMAGE = 'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=1800&q=85&auto=format&fit=crop';
+const ATELIER_IMAGE = '/images/atelier/makers-wide.jpg';
 
 const PROCESS = [
   { n: '01', title: 'Selection', text: 'We choose every board by hand — domestic white oak and walnut from FSC-certified suppliers, examined for grain, figure, and stability.' },
@@ -217,8 +217,8 @@ export default function Home() {
                 style={{ '--delay': `${i * 80}ms` }}
               >
                 <div className={styles.cardImageWrap}>
-                  <div className={styles.cardImage} style={{ backgroundImage: `url(${p.image})`, backgroundPosition: p.imagePosition || 'center' }} />
-                  <div className={styles.cardImageHover} style={{ backgroundImage: `url(${second})`, backgroundPosition: p.imagePosition || 'center' }} />
+                  <div className={styles.cardImage} style={{ backgroundImage: `url(${p.image})`, backgroundPosition: p.imagePosition || 'center', backgroundSize: p.variants ? 'contain' : undefined, backgroundRepeat: p.variants ? 'no-repeat' : undefined, backgroundColor: p.variants ? 'var(--paper-deep)' : undefined }} />
+                  <div className={styles.cardImageHover} style={{ backgroundImage: `url(${second})`, backgroundPosition: p.imagePosition || 'center', backgroundSize: p.variants ? 'contain' : undefined, backgroundRepeat: p.variants ? 'no-repeat' : undefined, backgroundColor: p.variants ? 'var(--paper-deep)' : undefined }} />
                 </div>
                 <div className={styles.cardMeta}>
                   <h3 className={styles.cardName}><em>{p.name}</em></h3>

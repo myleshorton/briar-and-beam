@@ -1,0 +1,133 @@
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  background: #1c1813;
+  overflow: hidden;
+  transition: opacity 1000ms var(--ease-out), transform 1000ms var(--ease-out);
+}
+
+.leaving {
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+/* B&W workshop photo as faint atmosphere */
+.photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.16;
+  filter: grayscale(1) contrast(1.05);
+  transform: scale(1.05);
+  animation: splashKen 18s var(--ease-out) infinite alternate;
+}
+@keyframes splashKen {
+  from { transform: scale(1.05); }
+  to { transform: scale(1.14); }
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 90% at 50% 45%, transparent 35%, rgba(15, 12, 9, 0.7) 100%);
+}
+
+.inner {
+  position: relative;
+  text-align: center;
+  padding: 2rem;
+  color: #f3ece0;
+}
+
+.eyebrow,
+.wordmark,
+.tagline,
+.enter {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: splashRise 1.2s var(--ease-out) forwards;
+  animation-delay: var(--d, 0ms);
+}
+
+.eyebrow {
+  font-family: var(--body);
+  font-size: 0.72rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 1.4rem;
+}
+
+.wordmark {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(3rem, 11vw, 6.5rem);
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.28em;
+}
+.amp {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 300;
+}
+
+.tagline {
+  font-family: var(--body);
+  font-size: clamp(1rem, 2.4vw, 1.35rem);
+  color: #cfc4b3;
+  margin: 1.5rem 0 2.6rem;
+  letter-spacing: 0.04em;
+}
+.tagline em {
+  font-style: italic;
+  color: #f3ece0;
+}
+
+.enter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: transparent;
+  color: #f3ece0;
+  border: 1px solid rgba(243, 236, 224, 0.42);
+  padding: 0.95rem 2rem;
+  font-family: var(--body);
+  font-size: 0.78rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 400ms var(--ease-out), color 400ms var(--ease-out),
+    background-color 400ms var(--ease-out), gap 400ms var(--ease-out);
+}
+.enter:hover {
+  border-color: var(--gold);
+  color: #fff;
+  background: rgba(168, 149, 106, 0.14);
+  gap: 1.1rem;
+}
+.arrow {
+  transition: transform 400ms var(--ease-out);
+}
+.enter:hover .arrow {
+  transform: translateX(4px);
+}
+
+@keyframes splashRise {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eyebrow, .wordmark, .tagline, .enter { animation: none; opacity: 1; transform: none; }
+  .photo { animation: none; }
+}
