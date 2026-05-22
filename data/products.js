@@ -185,8 +185,6 @@ export const products = [
     images: [
       '/images/boards/walnut-paddle.jpg',
       '/images/boards/oak-walnut-paddle.jpg',
-      '/images/boards/oak-walnut-server.jpg',
-      '/images/boards/oak-walnut-board.jpg',
       '/images/boards/white-oak.jpg',
       '/images/boards/leopard-paddle.jpg',
       '/images/boards/leopard-slab.jpg'
@@ -196,9 +194,7 @@ export const products = [
     variants: [
       { name: 'Walnut Paddle', wood: 'Black Walnut', price: 125, dims: 'approx. 20" L x 9" W', image: '/images/boards/walnut-paddle.jpg' },
       { name: 'Oak & Walnut Paddle', wood: 'White Oak & Walnut', price: 95, dims: 'approx. 18" L x 9" W', image: '/images/boards/oak-walnut-paddle.jpg' },
-      { name: 'Oak & Walnut Server', wood: 'White Oak & Walnut', price: 95, dims: 'approx. 18" L x 8" W', image: '/images/boards/oak-walnut-server.jpg' },
-      { name: 'Oak & Walnut Board', wood: 'White Oak & Walnut', price: 95, dims: 'approx. 16" L x 10" W', image: '/images/boards/oak-walnut-board.jpg' },
-      { name: 'White Oak Board', wood: 'White Oak', price: 75, dims: 'approx. 16" L x 10" W', image: '/images/boards/white-oak.jpg' },
+      { name: 'White Oak Paddle', wood: 'White Oak', price: 75, dims: 'approx. 16" L x 10" W', image: '/images/boards/white-oak.jpg' },
       { name: 'Leopardwood Paddle', wood: 'Leopardwood', price: 115, dims: 'approx. 18" L x 9" W', image: '/images/boards/leopard-paddle.jpg' },
       { name: 'Leopardwood Slab', wood: 'Leopardwood', price: 105, dims: 'approx. 14" L x 7" W', image: '/images/boards/leopard-slab.jpg' }
     ],
