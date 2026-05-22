@@ -56,6 +56,7 @@ export const products = [
     images: [
       '/images/alexia/alexia-1.jpg'
     ],
+    imagePosition: 'center 62%',
     category: 'Nesting Tables',
     description: 'Something less predictable than an end table — a pair, because sometimes two is better than one. The Alexia nestles beside a couch or tucks together as a nightstand. Quiet, considered, and a little unexpected.',
     woodOptions: [
@@ -174,6 +175,37 @@ export const products = [
       'Dimensions: TBD',
       'Finish: Oil-based Wax',
       'Lead Time: 3-6 weeks'
+    ]
+  },
+  {
+    id: 8,
+    name: 'Cutting Boards',
+    price: 75,
+    image: '/images/boards/walnut-paddle.jpg',
+    images: [
+      '/images/boards/walnut-paddle.jpg',
+      '/images/boards/oak-walnut-paddle.jpg',
+      '/images/boards/oak-walnut-server.jpg',
+      '/images/boards/oak-walnut-board.jpg',
+      '/images/boards/white-oak.jpg',
+      '/images/boards/leopard-paddle.jpg',
+      '/images/boards/leopard-slab.jpg'
+    ],
+    category: 'Kitchen',
+    description: 'Each board is cut, shaped, and finished by hand from a single piece of hardwood — no two alike. Scroll through to find yours, then bring it home. Walnut and leopardwood run a touch dearer for the wood alone; all of them are made for a lifetime of bread, cheese, and slow Sunday mornings.',
+    variants: [
+      { name: 'Walnut Paddle', wood: 'Black Walnut', price: 125, dims: 'approx. 20" L x 9" W', image: '/images/boards/walnut-paddle.jpg' },
+      { name: 'Oak & Walnut Paddle', wood: 'White Oak & Walnut', price: 95, dims: 'approx. 18" L x 9" W', image: '/images/boards/oak-walnut-paddle.jpg' },
+      { name: 'Oak & Walnut Server', wood: 'White Oak & Walnut', price: 95, dims: 'approx. 18" L x 8" W', image: '/images/boards/oak-walnut-server.jpg' },
+      { name: 'Oak & Walnut Board', wood: 'White Oak & Walnut', price: 95, dims: 'approx. 16" L x 10" W', image: '/images/boards/oak-walnut-board.jpg' },
+      { name: 'White Oak Board', wood: 'White Oak', price: 75, dims: 'approx. 16" L x 10" W', image: '/images/boards/white-oak.jpg' },
+      { name: 'Leopardwood Paddle', wood: 'Leopardwood', price: 115, dims: 'approx. 18" L x 9" W', image: '/images/boards/leopard-paddle.jpg' },
+      { name: 'Leopardwood Slab', wood: 'Leopardwood', price: 105, dims: 'approx. 14" L x 7" W', image: '/images/boards/leopard-slab.jpg' }
+    ],
+    details: [
+      'Finish: Food-safe oil & wax',
+      'Care: Hand wash, towel dry, oil periodically',
+      'Each piece is one of a kind'
     ]
   }
 ];

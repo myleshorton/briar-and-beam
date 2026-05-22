@@ -213,6 +213,33 @@
   .thumbStrip { position: static; top: auto; margin-top: 1rem; }
 }
 
+/* ---------- Cutting-board collection (variant picker) ---------- */
+.mainImagePortrait {
+  aspect-ratio: 3 / 4;
+}
+
+.pickerLabel {
+  margin: 1.1rem 0 0.6rem;
+}
+
+.boardPicker {
+  position: static;
+  top: auto;
+  display: flex;
+  grid-template-columns: none;
+  gap: 0.55rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.boardPicker .thumb {
+  flex: 0 0 auto;
+  width: 78px;
+  aspect-ratio: 3 / 4;
+  scroll-snap-align: start;
+}
+
 /* ---------- Editorial (right) ---------- */
 .editorial {
   padding: 1.5rem var(--gutter) var(--section);

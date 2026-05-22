@@ -60,13 +60,19 @@ export default function ProductDetail() {
   const productIndex = products.findIndex((p) => p.id === product.id) + 1;
   const num = productIndex.toString().padStart(2, '0');
 
-  const adjustedPrice = product.price + (product.woodOptions?.[selectedWood]?.priceAdjust || 0);
   const images = product.images || [product.image];
+  const variant = product.variants ? (product.variants[selectedImage] || product.variants[0]) : null;
+  const adjustedPrice = variant
+    ? variant.price
+    : product.price + (product.woodOptions?.[selectedWood]?.priceAdjust || 0);
+  const details = variant
+    ? [`Wood: ${variant.wood}`, `Dimensions: ${variant.dims}`, ...product.details]
+    : product.details;
 
   const handleAddToCart = () => {
     const cart = JSON.parse(localStorage.getItem('briarBeamCart')) || [];
-    const wood = product.woodOptions?.[selectedWood]?.name || '';
-    const cartId = `${product.id}-${wood}`;
+    const wood = variant ? variant.wood : (product.woodOptions?.[selectedWood]?.name || '');
+    const cartId = variant ? `${product.id}-${variant.name}` : `${product.id}-${wood}`;
     const existing = cart.find((item) => item.cartId === cartId);
 
     if (existing) {
@@ -75,6 +81,8 @@ export default function ProductDetail() {
       cart.push({
         ...product,
         cartId,
+        name: variant ? variant.name : product.name,
+        image: variant ? variant.image : product.image,
         selectedWood: wood,
         price: adjustedPrice,
         quantity,
@@ -124,18 +132,24 @@ export default function ProductDetail() {
       <main className={styles.spread}>
         {/* Left column — image gallery */}
         <section className={styles.gallery}>
-          <div className={styles.mainImageWrap}>
+          <div className={`${styles.mainImageWrap} ${product.variants ? styles.mainImagePortrait : ''}`}>
             <div
               key={selectedImage}
               className={styles.mainImage}
-              style={{ backgroundImage: `url(${images[selectedImage]})` }}
+              style={{ backgroundImage: `url(${images[selectedImage]})`, backgroundPosition: product.imagePosition || 'center' }}
             />
             <span className={styles.imgIndex}>
               {selectedImage + 1} / {images.length}
             </span>
           </div>
 
-          <div className={styles.thumbStrip}>
+          {product.variants && (
+            <p className={`smallcaps ${styles.pickerLabel}`}>
+              Choose your board &mdash; <em>{variant.name}</em>
+            </p>
+          )}
+
+          <div className={`${styles.thumbStrip} ${product.variants ? styles.boardPicker : ''}`}>
             {images.map((img, idx) => (
               <button
                 key={idx}
@@ -157,7 +171,7 @@ export default function ProductDetail() {
                 {product.category}
               </p>
               <h1 className={styles.title}>
-                <em>{product.name}</em>
+                <em>{variant ? variant.name : product.name}</em>
               </h1>
             </div>
 
@@ -180,7 +194,7 @@ export default function ProductDetail() {
             <div className={`reveal ${styles.specs}`} style={{ '--delay': '360ms' }}>
               <p className="smallcaps">Specifications</p>
               <ul>
-                {product.details.map((d, i) => {
+                {details.map((d, i) => {
                   const [label, ...rest] = d.split(':');
                   const value = rest.join(':').trim();
                   return (
@@ -277,7 +291,7 @@ export default function ProductDetail() {
               style={{ '--delay': `${i * 80}ms` }}
             >
               <div className={styles.relatedImageWrap}>
-                <div className={styles.relatedImage} style={{ backgroundImage: `url(${p.image})` }} />
+                <div className={styles.relatedImage} style={{ backgroundImage: `url(${p.image})`, backgroundPosition: p.imagePosition || 'center' }} />
               </div>
               <div className={styles.relatedMeta}>
                 <h3><em>{p.name}</em></h3>

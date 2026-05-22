@@ -217,8 +217,8 @@ export default function Home() {
                 style={{ '--delay': `${i * 80}ms` }}
               >
                 <div className={styles.cardImageWrap}>
-                  <div className={styles.cardImage} style={{ backgroundImage: `url(${p.image})` }} />
-                  <div className={styles.cardImageHover} style={{ backgroundImage: `url(${second})` }} />
+                  <div className={styles.cardImage} style={{ backgroundImage: `url(${p.image})`, backgroundPosition: p.imagePosition || 'center' }} />
+                  <div className={styles.cardImageHover} style={{ backgroundImage: `url(${second})`, backgroundPosition: p.imagePosition || 'center' }} />
                 </div>
                 <div className={styles.cardMeta}>
                   <h3 className={styles.cardName}><em>{p.name}</em></h3>
