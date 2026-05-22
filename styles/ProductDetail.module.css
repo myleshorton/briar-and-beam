@@ -216,10 +216,15 @@
 /* ---------- Cutting-board collection (variant picker) ---------- */
 .mainImagePortrait {
   aspect-ratio: 3 / 4;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .pickerLabel {
-  margin: 1.1rem 0 0.6rem;
+  margin: 1.1rem auto 0.6rem;
+  max-width: 340px;
+  text-align: center;
 }
 
 .boardPicker {
@@ -228,6 +233,9 @@
   display: flex;
   grid-template-columns: none;
   gap: 0.55rem;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
   overflow-x: auto;
   padding-bottom: 0.5rem;
   scroll-snap-type: x mandatory;
@@ -235,7 +243,7 @@
 }
 .boardPicker .thumb {
   flex: 0 0 auto;
-  width: 78px;
+  width: 70px;
   aspect-ratio: 3 / 4;
   scroll-snap-align: start;
 }
