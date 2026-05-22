@@ -3,14 +3,9 @@ export const products = [
     id: 1,
     name: 'The Eloise Table',
     price: 2400,
-    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
+    image: '/images/eloise/eloise-1.jpg',
     images: [
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop'
+      '/images/eloise/eloise-1.jpg'
     ],
     category: 'Dining',
     description: 'Built for long dinners and the late mornings that follow. A solid white oak dining table with room for six, a matte hand-rubbed finish, edges softened just enough to invite a hand. Made to hold a family and the stories it gathers, for as long as you\'ll have it.',
@@ -57,14 +52,9 @@ export const products = [
     id: 3,
     name: 'The Alexia',
     price: 1200,
-    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
+    image: '/images/alexia/alexia-1.jpg',
     images: [
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop'
+      '/images/alexia/alexia-1.jpg'
     ],
     category: 'Nesting Tables',
     description: 'Something less predictable than an end table — a pair, because sometimes two is better than one. The Alexia nestles beside a couch or tucks together as a nightstand. Quiet, considered, and a little unexpected.',
