@@ -75,7 +75,7 @@ export const products = [
   },
   {
     id: 4,
-    name: 'The Julien',
+    name: 'The Jack',
     price: 3800,
     image: '/images/julien/julien-1.jpg',
     images: [
@@ -84,7 +84,7 @@ export const products = [
       '/images/julien/julien-3.jpg'
     ],
     category: 'Coffee Table',
-    description: 'The Julien began as a margin sketch in an old carpenter\'s notebook — a low, simple table with no ornamentation, only proportion and purpose. Built in solid walnut with traditional joinery, made for a long life of being lived around.',
+    description: 'The Jack began as a margin sketch in an old carpenter\'s notebook — a low, simple table with no ornamentation, only proportion and purpose. Built in solid walnut with traditional joinery, made for a long life of being lived around.',
     woodOptions: [
       { name: 'White Oak', priceAdjust: 0 },
       { name: 'Walnut', priceAdjust: 0 }
@@ -100,7 +100,7 @@ export const products = [
   },
   {
     id: 5,
-    name: 'The Jack',
+    name: 'The Julien',
     price: 4000,
     image: '/images/jack/jack-hero.jpg',
     images: [

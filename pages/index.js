@@ -83,7 +83,7 @@ export default function Home() {
   const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
   const cartCount = cart.reduce((s, i) => s + i.quantity, 0);
 
-  // Featured: The Jack (id 5) — fall back to first
+  // Featured: The Julien (id 5) — fall back to first
   const featured = products.find((p) => p.id === 5) || products[0];
   const rest = products.filter((p) => p.id !== featured.id);
 
