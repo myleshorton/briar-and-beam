@@ -77,14 +77,11 @@ export const products = [
     id: 4,
     name: 'The Julien',
     price: 3800,
-    image: 'https://images.unsplash.com/photo-1577808840935-c00414ecd12d?w=700&h=500&fit=crop',
+    image: '/images/julien/julien-1.jpg',
     images: [
-      'https://images.unsplash.com/photo-1577808840935-c00414ecd12d?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1577808840935-c00414ecd12d?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1577808840935-c00414ecd12d?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1577808840935-c00414ecd12d?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1577808840935-c00414ecd12d?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1577808840935-c00414ecd12d?w=700&h=500&fit=crop'
+      '/images/julien/julien-1.jpg',
+      '/images/julien/julien-2.jpg',
+      '/images/julien/julien-3.jpg'
     ],
     category: 'Coffee Table',
     description: 'The Julien began as a margin sketch in an old carpenter\'s notebook — a low, simple table with no ornamentation, only proportion and purpose. Built in solid walnut with traditional joinery, made for a long life of being lived around.',
