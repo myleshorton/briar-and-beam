@@ -5,7 +5,10 @@ export const products = [
     price: 2400,
     image: '/images/eloise/eloise-1.jpg',
     images: [
-      '/images/eloise/eloise-1.jpg'
+      '/images/eloise/eloise-1.jpg',
+      '/images/eloise/eloise-2.jpg',
+      '/images/eloise/eloise-3.jpg',
+      '/images/eloise/eloise-4.jpg'
     ],
     category: 'Dining',
     description: 'Built for long dinners and the late mornings that follow. A solid white oak dining table with room for six, a matte hand-rubbed finish, edges softened just enough to invite a hand. Made to hold a family and the stories it gathers, for as long as you\'ll have it.',
@@ -28,7 +31,8 @@ export const products = [
     image: '/images/livia/livia-1.jpg',
     images: [
       '/images/livia/livia-1.jpg',
-      '/images/livia/livia-2.jpg'
+      '/images/livia/livia-2.jpg',
+      '/images/livia/livia-3.jpg'
     ],
     category: 'Side Table',
     description: 'A small side table drawn from memory — scalloped edges I once fell in love with and never forgot. The Livia is a quiet thing, small enough for a bedside and beautiful enough to live in any room of the house. Built in solid walnut to last well past a single lifetime.',
@@ -147,14 +151,12 @@ export const products = [
     id: 7,
     name: 'The Kate',
     price: 0,
-    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
+    image: '/images/kate/kate-1.jpg',
     images: [
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop'
+      '/images/kate/kate-1.jpg',
+      '/images/kate/kate-2.jpg',
+      '/images/kate/kate-3.jpg',
+      '/images/kate/kate-4.jpg'
     ],
     category: 'Console',
     description: 'The Kate is for the space you always mean to do something with. That bare wall in the entryway, that stretch of hallway that feels too empty. A console with the kind of quiet presence that makes a room feel like someone thought about it — because you did.',
