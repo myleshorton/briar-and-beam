@@ -25,14 +25,10 @@ export const products = [
     id: 2,
     name: 'The Livia',
     price: 1200,
-    image: '/images/LIVIA TABLE.jpg',
+    image: '/images/livia/livia-1.jpg',
     images: [
-      '/images/LIVIA TABLE.jpg',
-      '/images/LIVIA TABLE.jpg',
-      '/images/LIVIA TABLE.jpg',
-      '/images/LIVIA TABLE.jpg',
-      '/images/LIVIA TABLE.jpg',
-      '/images/LIVIA TABLE.jpg'
+      '/images/livia/livia-1.jpg',
+      '/images/livia/livia-2.jpg'
     ],
     category: 'Side Table',
     description: 'A small side table drawn from memory — scalloped edges I once fell in love with and never forgot. The Livia is a quiet thing, small enough for a bedside and beautiful enough to live in any room of the house. Built in solid walnut to last well past a single lifetime.',
@@ -56,7 +52,6 @@ export const products = [
     images: [
       '/images/alexia/alexia-1.jpg'
     ],
-    imagePosition: 'center 62%',
     category: 'Nesting Tables',
     description: 'Something less predictable than an end table — a pair, because sometimes two is better than one. The Alexia nestles beside a couch or tucks together as a nightstand. Quiet, considered, and a little unexpected.',
     woodOptions: [
