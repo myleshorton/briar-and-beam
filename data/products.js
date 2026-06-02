@@ -8,7 +8,8 @@ export const products = [
       '/images/eloise/eloise-1.jpg',
       '/images/eloise/eloise-2.jpg',
       '/images/eloise/eloise-3.jpg',
-      '/images/eloise/eloise-4.jpg'
+      '/images/eloise/eloise-4.jpg',
+      '/images/eloise/eloise-5.jpg'
     ],
     category: 'Dining',
     description: 'Built for long dinners and the late mornings that follow. A solid white oak dining table with room for six, a matte hand-rubbed finish, edges softened just enough to invite a hand. Made to hold a family and the stories it gathers, for as long as you\'ll have it.',
