@@ -54,7 +54,8 @@ export const products = [
     price: 1200,
     image: '/images/alexia/alexia-1.jpg',
     images: [
-      '/images/alexia/alexia-1.jpg'
+      '/images/alexia/alexia-1.jpg',
+      '/images/alexia/alexia-2.jpg'
     ],
     category: 'Nesting Tables',
     description: 'Something less predictable than an end table — a pair, because sometimes two is better than one. The Alexia nestles beside a couch or tucks together as a nightstand. Quiet, considered, and a little unexpected.',
