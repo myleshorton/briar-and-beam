@@ -157,6 +157,9 @@ export default function ProductDetail() {
             <span className={styles.imgIndex}>
               {selectedImage + 1} / {images.length}
             </span>
+            {images.length > 1 && (
+              <span className={styles.mainImageArrow} aria-hidden="true">&rarr;</span>
+            )}
           </div>
 
           {product.variants && (

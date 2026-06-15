@@ -162,6 +162,35 @@
   outline-offset: 4px;
 }
 
+/* Right-side "next" indicator — appears on multi-image galleries */
+.mainImageArrow {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: rgba(247, 243, 236, 0.92);
+  color: var(--ink);
+  font-size: 1.05rem;
+  line-height: 1;
+  pointer-events: none;
+  opacity: 0.88;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+  transition: opacity 280ms var(--ease-out), transform 280ms var(--ease-out), background-color 280ms var(--ease-out);
+}
+.mainImageClickable:hover .mainImageArrow,
+.mainImageClickable:focus-visible .mainImageArrow {
+  opacity: 1;
+  background: rgb(247, 243, 236);
+  transform: translateY(-50%) translateX(4px);
+}
+
 .mainImage {
   position: absolute;
   inset: 0;
