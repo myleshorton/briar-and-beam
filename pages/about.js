@@ -108,8 +108,8 @@ export default function About() {
           <div className={`reveal ${styles.featureBody}`} style={{ '--delay': '240ms' }}>
             <p>IKEA when money was tight. Pottery Barn when I could stretch the budget. Pieces that looked fine in the store but never quite felt like mine — like they were just holding space until something better came along. I always assumed that something better was simply out of reach.</p>
             <p>What I really wanted was to be surrounded by beauty. Not just objects that filled a room, but pieces that felt alive — that had weight and warmth and a story. Furniture my children would want in their own homes one day. Things that would outlast me and carry something of our family forward.</p>
-            <p className={styles.bigStatement}><em>Then I met Ron.</em></p>
-            <p>Ron is a carpenter of rare talent — someone who understands wood the way a musician understands sound. I had sketches and dreams; he had the hands and the knowledge to bring them to life. Together we built the pieces I had spent decades imagining. A dining table that made me want to host every dinner party. A console that stopped me in my tracks every time I walked past it.</p>
+            <p className={styles.bigStatement}><em>Then I met Ronny.</em></p>
+            <p>Ronny is a carpenter of rare talent — someone who understands wood the way a musician understands sound. I had sketches and dreams; he had the hands and the knowledge to bring them to life. Together we built the pieces I had spent decades imagining. A dining table that made me want to host every dinner party. A console that stopped me in my tracks every time I walked past it.</p>
             <p>After a few pieces, we looked at each other and knew: we couldn&rsquo;t keep this to ourselves. Briar &amp; Beam exists to bring the joy of truly beautiful, lasting furniture to the people who have always deserved it.</p>
           </div>
         </div>
