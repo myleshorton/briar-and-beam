@@ -128,18 +128,40 @@
 /* ---------- Hero — full-bleed photo with dark overlay for white text ---------- */
 .hero {
   position: relative;
-  min-height: 86vh;
+  min-height: 88vh;
   width: 100%;
   overflow: hidden;
-  background: var(--paper-deep);
-  color: var(--ink);
+  background: #2a1f15;
+  color: var(--paper);
 }
 
-/* Centered hero — ink text on cream paper, no photo */
+.heroImageWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroImage {
+  position: absolute;
+  inset: -4%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.78) saturate(0.92) sepia(0.06);
+}
+
+.heroVignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(20,14,8,0.42) 0%, rgba(20,14,8,0.0) 22%, rgba(20,14,8,0.0) 55%, rgba(20,14,8,0.58) 100%),
+    radial-gradient(ellipse at center, rgba(0,0,0,0) 35%, rgba(0,0,0,0.5) 100%);
+}
+
+/* Centered hero — light text on photograph */
 .heroInner {
   position: relative;
   z-index: 2;
-  min-height: 86vh;
+  min-height: 88vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -147,13 +169,14 @@
   gap: 1.4rem;
   padding: 7rem var(--gutter) 4rem;
   text-align: center;
-  color: var(--ink);
+  color: var(--paper);
   max-width: 1100px;
   margin: 0 auto;
 }
 
 .heroInner :global(.smallcaps) {
-  color: var(--ink-soft);
+  color: var(--paper);
+  opacity: 0.88;
   letter-spacing: 0.32em;
   font-size: 0.72rem;
 }
@@ -164,7 +187,7 @@
   font-size: clamp(3.5rem, 11vw, 9rem);
   line-height: 0.9;
   letter-spacing: -0.025em;
-  color: var(--ink);
+  color: var(--paper);
   display: inline-block;
 }
 .heroWordmark em {
@@ -180,7 +203,8 @@
   font-weight: 300;
   font-size: clamp(1.1rem, 2vw, 1.5rem);
   letter-spacing: 0.04em;
-  color: var(--ink-soft);
+  color: var(--paper);
+  opacity: 0.92;
   margin-top: -0.4rem;
 }
 
@@ -189,7 +213,8 @@
   font-style: italic;
   font-size: 1.05rem;
   line-height: 1.6;
-  color: var(--ink-soft);
+  color: var(--paper);
+  opacity: 0.86;
   max-width: 34rem;
 }
 
@@ -198,9 +223,9 @@
   align-items: center;
   gap: 0.7rem;
   padding: 0.95rem 1.6rem;
-  border: 1px solid var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: 0;
-  color: var(--ink);
+  color: var(--paper);
   margin-top: 1rem;
   font-family: var(--display);
   font-weight: 500;
@@ -209,14 +234,14 @@
 .heroCta :global(.smallcaps) {
   letter-spacing: 0.28em;
   font-size: 0.7rem;
-  color: var(--ink);
+  color: var(--paper);
 }
 .heroCta:hover {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
 }
-.heroCta:hover :global(.smallcaps) { color: var(--paper); }
+.heroCta:hover :global(.smallcaps) { color: var(--ink); }
 
 @media (max-width: 600px) {
   .heroInner { padding-top: 5.5rem; }

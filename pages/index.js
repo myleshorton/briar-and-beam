@@ -4,6 +4,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { products } from '../data/products';
 
+const HERO_IMAGE = '/images/eloise/eloise-1.jpg';
 const ATELIER_IMAGE = 'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=1800&q=85&auto=format&fit=crop';
 
 const PROCESS = [
@@ -117,8 +118,16 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero — text-only editorial; cream paper, no photo */}
+      {/* Hero — full-bleed product photo with centered typography */}
       <section className={styles.hero}>
+        <div className={styles.heroImageWrap}>
+          <div
+            className={`${styles.heroImage} kenburns`}
+            style={{ backgroundImage: `url(${HERO_IMAGE})` }}
+            aria-hidden="true"
+          />
+          <div className={styles.heroVignette} />
+        </div>
         <div className={styles.heroInner}>
           <span className="rise smallcaps" style={{ '--delay': '300ms' }}>Made by Hand</span>
           <h1 className="rise" style={{ '--delay': '500ms' }}>
