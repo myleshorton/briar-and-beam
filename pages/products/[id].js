@@ -132,7 +132,23 @@ export default function ProductDetail() {
       <main className={styles.spread}>
         {/* Left column — image gallery */}
         <section className={styles.gallery}>
-          <div className={`${styles.mainImageWrap} ${product.variants ? styles.mainImagePortrait : ''}`}>
+          <div
+            className={`${styles.mainImageWrap} ${product.variants ? styles.mainImagePortrait : ''} ${images.length > 1 ? styles.mainImageClickable : ''}`}
+            onClick={() => images.length > 1 && setSelectedImage((selectedImage + 1) % images.length)}
+            role={images.length > 1 ? 'button' : undefined}
+            tabIndex={images.length > 1 ? 0 : undefined}
+            onKeyDown={(e) => {
+              if (images.length <= 1) return;
+              if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+                e.preventDefault();
+                setSelectedImage((selectedImage + 1) % images.length);
+              } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                setSelectedImage((selectedImage - 1 + images.length) % images.length);
+              }
+            }}
+            aria-label={images.length > 1 ? `Image ${selectedImage + 1} of ${images.length}. Click to advance.` : undefined}
+          >
             <div
               key={selectedImage}
               className={styles.mainImage}
