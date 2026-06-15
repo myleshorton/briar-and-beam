@@ -124,14 +124,9 @@ export const products = [
     id: 6,
     name: 'The Juniper',
     price: 1800,
-    image: 'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=700&h=500&fit=crop',
+    image: '/images/juniper/juniper-1.jpg',
     images: [
-      'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=700&h=500&fit=crop',
-      'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=700&h=500&fit=crop'
+      '/images/juniper/juniper-1.jpg'
     ],
     category: 'Side Table',
     description: 'The Juniper is The Livia\'s little sister — no drawer, no fuss, just as elegant and effortlessly simple. She tucks into an entryway or lines a hallway without saying too much, but you\'ll notice her every time you walk by.',
