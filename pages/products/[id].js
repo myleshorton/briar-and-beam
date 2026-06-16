@@ -121,9 +121,8 @@ export default function ProductDetail() {
             <Link href="/">Collection</Link>
             <Link href="/about">Atelier</Link>
             <a href="mailto:brianandbeam@gmail.com">Inquire</a>
-            <Link href="/" className={styles.back}>
-              <span aria-hidden="true">&larr;</span>
-              <span>Back</span>
+            <Link href="/cart" className={styles.cartLink}>
+              <span>Cart</span>
             </Link>
           </nav>
         </div>

@@ -133,10 +133,10 @@ export default function Home() {
             <Link href="/about">Atelier</Link>
             <a href="#process">Process</a>
             <a href="mailto:brianandbeam@gmail.com">Inquire</a>
-            <button className={styles.cartBtn} onClick={() => setCartOpen(true)} aria-label="Open cart">
+            <Link href="/cart" className={styles.cartBtn} aria-label="View cart">
               <span className="smallcaps">Cart</span>
               <span className={styles.cartCount}>{cartCount.toString().padStart(2, '0')}</span>
-            </button>
+            </Link>
           </nav>
         </div>
       </header>

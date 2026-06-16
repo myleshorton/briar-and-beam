@@ -250,6 +250,20 @@
   .thumbStrip { position: static; top: auto; margin-top: 1rem; }
 }
 
+.cartLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  transition: background-color 280ms var(--ease-out), color 280ms var(--ease-out);
+}
+.cartLink:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
 /* ---------- Cutting-board collection (variant picker) ---------- */
 .mainImagePortrait {
   aspect-ratio: 3 / 4;
