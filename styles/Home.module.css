@@ -27,7 +27,7 @@
   padding: 1.4rem var(--gutter);
   transition: background-color 600ms var(--ease-out), backdrop-filter 600ms var(--ease-out), color 600ms var(--ease-out), border-color 600ms var(--ease-out);
   border-bottom: 1px solid transparent;
-  color: var(--ink);
+  color: var(--paper);
 }
 
 .headerSolid {
@@ -144,11 +144,11 @@
 /* ---------- Hero — full-bleed photo with dark overlay for white text ---------- */
 .hero {
   position: relative;
-  min-height: 88vh;
+  min-height: 90vh;
   width: 100%;
   overflow: hidden;
-  background: var(--paper-deep);
-  color: var(--ink);
+  background: #2a2018;
+  color: var(--paper);
 }
 
 .heroImageWrap {
@@ -160,30 +160,38 @@
 .heroImage {
   position: absolute;
   inset: 0;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center bottom;
+  background-size: cover;
+  background-position: center;
 }
 
-/* Editorial hero — ink text overlay on full-product photo (cream image) */
+.heroVignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(20, 14, 8, 0.55) 0%, rgba(20, 14, 8, 0.1) 30%, rgba(20, 14, 8, 0) 55%, rgba(20, 14, 8, 0.4) 100%),
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.35) 100%);
+}
+
+/* Editorial hero — cream text on dark/moody photo */
 .heroInner {
   position: relative;
   z-index: 2;
-  min-height: 88vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  gap: 0.9rem;
-  padding: 5.5rem var(--gutter) 4rem;
+  justify-content: center;
+  gap: 1rem;
+  padding: 6rem var(--gutter) 4rem;
   text-align: center;
-  color: var(--ink);
+  color: var(--paper);
   max-width: 1100px;
   margin: 0 auto;
 }
 
 .heroInner :global(.smallcaps) {
-  color: var(--ink-soft);
+  color: var(--paper);
+  opacity: 0.88;
   letter-spacing: 0.32em;
   font-size: 0.72rem;
 }
@@ -191,11 +199,12 @@
 .heroWordmark {
   font-family: var(--display);
   font-weight: 500;
-  font-size: clamp(2.8rem, 8vw, 6.5rem);
+  font-size: clamp(3rem, 9vw, 7.5rem);
   line-height: 0.95;
   letter-spacing: -0.025em;
-  color: var(--ink);
+  color: var(--paper);
   display: inline-block;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
 }
 .heroWordmark em {
   font-style: italic;
@@ -210,8 +219,10 @@
   font-weight: 300;
   font-size: clamp(1.1rem, 2vw, 1.5rem);
   letter-spacing: 0.04em;
-  color: var(--ink-soft);
+  color: var(--paper);
+  opacity: 0.94;
   margin-top: -0.2rem;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.4);
 }
 
 .heroLede {
@@ -219,8 +230,10 @@
   font-style: italic;
   font-size: 1.05rem;
   line-height: 1.6;
-  color: var(--ink-soft);
+  color: var(--paper);
+  opacity: 0.9;
   max-width: 34rem;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.5);
 }
 
 .heroCta {
@@ -228,28 +241,26 @@
   align-items: center;
   gap: 0.7rem;
   padding: 0.95rem 1.6rem;
-  border: 1px solid var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   border-radius: 0;
-  color: var(--ink);
+  color: var(--paper);
   margin-top: 0.6rem;
   font-family: var(--display);
   font-weight: 500;
-  background: rgba(247, 244, 236, 0.7);
-  backdrop-filter: blur(2px);
   transition: background 320ms var(--ease-out), color 320ms var(--ease-out), border-color 320ms var(--ease-out), gap 320ms var(--ease-out);
 }
 .heroCta :global(.smallcaps) {
   letter-spacing: 0.28em;
   font-size: 0.7rem;
-  color: var(--ink);
+  color: var(--paper);
 }
 .heroCta:hover {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
   gap: 1rem;
 }
-.heroCta:hover :global(.smallcaps) { color: var(--paper); }
+.heroCta:hover :global(.smallcaps) { color: var(--ink); }
 
 @media (max-width: 600px) {
   .heroInner { padding-top: 5.5rem; }

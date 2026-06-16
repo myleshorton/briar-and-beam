@@ -4,7 +4,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { products } from '../data/products';
 
-const HERO_IMAGE = '/images/jack/jack-hero.jpg';
+const HERO_IMAGE = '/images/julien/julien-1.jpg';
 const ATELIER_IMAGE = 'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=1800&q=85&auto=format&fit=crop';
 
 const PROCESS = [
@@ -149,6 +149,7 @@ export default function Home() {
             style={{ backgroundImage: `url(${HERO_IMAGE})` }}
             aria-hidden="true"
           />
+          <div className={styles.heroVignette} />
         </div>
         <div className={styles.heroInner}>
           <span className="rise smallcaps" style={{ '--delay': '300ms' }}>Made by Hand</span>
