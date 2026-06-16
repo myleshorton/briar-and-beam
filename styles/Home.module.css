@@ -266,6 +266,131 @@
   .heroInner { padding-top: 5.5rem; }
 }
 
+/* ---------- Triptych — Juniper, Jack, Julien ---------- */
+.triptych {
+  background: var(--paper-deep);
+  padding: var(--section) var(--gutter);
+}
+
+.triptychHeader {
+  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto var(--section);
+}
+.triptychHeader :global(.smallcaps) {
+  color: var(--ink-soft);
+  letter-spacing: 0.34em;
+  font-size: 0.74rem;
+}
+
+.triptychTitle {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 1.2rem 0 0;
+}
+.triptychTitle em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+}
+
+.triptychGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  max-width: 1480px;
+  margin: 0 auto;
+}
+@media (max-width: 980px) {
+  .triptychGrid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}
+
+.triptychCard {
+  display: block;
+  color: var(--ink);
+  transition: transform 480ms var(--ease-out);
+}
+.triptychCard:hover {
+  transform: translateY(-4px);
+}
+
+.triptychImageWrap {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--paper-cream);
+}
+
+.triptychImage {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 1400ms var(--ease-out), filter 1400ms var(--ease-out);
+}
+.triptychCard:hover .triptychImage {
+  transform: scale(1.04);
+}
+
+.triptychMeta {
+  padding: 1.6rem 0.2rem 0;
+}
+
+.triptychNum {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  margin: 0 0 0.4rem;
+}
+
+.triptychName {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 0.8rem;
+}
+.triptychName em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.triptychCopy {
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 1.2rem;
+  max-width: 28rem;
+}
+
+.triptychLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.15rem;
+  transition: gap 320ms var(--ease-out);
+}
+.triptychCard:hover .triptychLink { gap: 0.85rem; }
+.triptychLink :global(.smallcaps) {
+  font-size: 0.7rem;
+  letter-spacing: 0.26em;
+}
+
 /* ---------- Editorial intro ---------- */
 .intro {
   background: var(--paper-cream);

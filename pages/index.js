@@ -169,6 +169,68 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Editorial triptych — Juniper, Jack, Julien */}
+      <section className={styles.triptych}>
+        <div className={styles.triptychHeader}>
+          <span className="reveal smallcaps">From the Atelier</span>
+          <h2 className={`reveal ${styles.triptychTitle}`} style={{ '--delay': '120ms' }}>
+            Three pieces, <em>by hand.</em>
+          </h2>
+        </div>
+        <div className={styles.triptychGrid}>
+          <Link href="/products/6" className={`reveal ${styles.triptychCard}`} style={{ '--delay': '0ms' }}>
+            <div className={styles.triptychImageWrap}>
+              <div className={styles.triptychImage} style={{ backgroundImage: 'url(/images/juniper/juniper-3.jpg)' }} />
+            </div>
+            <div className={styles.triptychMeta}>
+              <p className={styles.triptychNum}>I</p>
+              <h3 className={styles.triptychName}><em>The Juniper</em></h3>
+              <p className={styles.triptychCopy}>
+                Small, scalloped, made for quiet rooms. The Livia&rsquo;s little sister — turned legs, no drawer, no fuss.
+              </p>
+              <span className={styles.triptychLink}>
+                <span className="smallcaps">See the piece</span>
+                <span aria-hidden="true">&rarr;</span>
+              </span>
+            </div>
+          </Link>
+
+          <Link href="/products/4" className={`reveal ${styles.triptychCard}`} style={{ '--delay': '120ms' }}>
+            <div className={styles.triptychImageWrap}>
+              <div className={styles.triptychImage} style={{ backgroundImage: 'url(/images/julien/julien-1.jpg)' }} />
+            </div>
+            <div className={styles.triptychMeta}>
+              <p className={styles.triptychNum}>II</p>
+              <h3 className={styles.triptychName}><em>The Jack</em></h3>
+              <p className={styles.triptychCopy}>
+                A low, hand-turned coffee table for slow afternoons. Solid white oak, spindle legs, mortise &amp; tenon.
+              </p>
+              <span className={styles.triptychLink}>
+                <span className="smallcaps">See the piece</span>
+                <span aria-hidden="true">&rarr;</span>
+              </span>
+            </div>
+          </Link>
+
+          <Link href="/products/5" className={`reveal ${styles.triptychCard}`} style={{ '--delay': '240ms' }}>
+            <div className={styles.triptychImageWrap}>
+              <div className={styles.triptychImage} style={{ backgroundImage: 'url(/images/jack/jack-hero.jpg)' }} />
+            </div>
+            <div className={styles.triptychMeta}>
+              <p className={styles.triptychNum}>III</p>
+              <h3 className={styles.triptychName}><em>The Julien</em></h3>
+              <p className={styles.triptychCopy}>
+                The workhorse at the center of the house. Six generous drawers, solid white oak, built generations deep.
+              </p>
+              <span className={styles.triptychLink}>
+                <span className="smallcaps">See the piece</span>
+                <span aria-hidden="true">&rarr;</span>
+              </span>
+            </div>
+          </Link>
+        </div>
+      </section>
+
       {/* Editorial intro */}
       <section className={styles.intro}>
         <div className={styles.introInner}>
