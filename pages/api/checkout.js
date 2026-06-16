@@ -6,16 +6,31 @@
 import Stripe from 'stripe';
 import { products } from '../../data/products';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  if (!process.env.STRIPE_SECRET_KEY) {
-    return res.status(500).json({ error: 'Stripe is not configured on this deployment.' });
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    return res.status(500).json({
+      error:
+        'Stripe is not configured. STRIPE_SECRET_KEY is missing from this deployment. Add it in Vercel → Settings → Environment Variables, then redeploy.',
+    });
+  }
+  if (!key.startsWith('sk_')) {
+    return res.status(500).json({
+      error:
+        'STRIPE_SECRET_KEY does not look like a Stripe secret key (should start with "sk_test_" or "sk_live_"). Check that you pasted the Secret key, not the Publishable key.',
+    });
+  }
+
+  let stripe;
+  try {
+    stripe = new Stripe(key);
+  } catch (e) {
+    return res.status(500).json({ error: `Stripe init failed: ${e.message}` });
   }
 
   try {
