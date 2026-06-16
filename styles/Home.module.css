@@ -125,6 +125,22 @@
   letter-spacing: 0.04em;
 }
 
+.cartError {
+  margin: 0.6rem 0 0;
+  padding: 0.6rem 0.8rem;
+  background: rgba(180, 70, 60, 0.08);
+  border: 1px solid rgba(180, 70, 60, 0.25);
+  color: #8a3a32;
+  font-family: var(--body);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.cartReserve:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
 /* ---------- Hero — full-bleed photo with dark overlay for white text ---------- */
 .hero {
   position: relative;

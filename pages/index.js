@@ -17,6 +17,29 @@ const PROCESS = [
 export default function Home() {
   const [cart, setCart] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
+  const [checkoutError, setCheckoutError] = useState(null);
+
+  const handleCheckout = async () => {
+    if (cart.length === 0) return;
+    setCheckoutLoading(true);
+    setCheckoutError(null);
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: cart }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.url) {
+        throw new Error(data.error || 'Failed to start checkout.');
+      }
+      window.location.href = data.url;
+    } catch (e) {
+      setCheckoutError(e.message);
+      setCheckoutLoading(false);
+    }
+  };
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
 
@@ -380,12 +403,19 @@ export default function Home() {
                 <span className="smallcaps">Subtotal</span>
                 <span className={`${styles.cartTotalAmt} mono`}>${total.toLocaleString()}</span>
               </div>
-              <button className={styles.cartReserve}>
-                <span className="smallcaps">Checkout</span>
-                <span aria-hidden="true">&rarr;</span>
+              <button
+                className={styles.cartReserve}
+                onClick={handleCheckout}
+                disabled={checkoutLoading}
+              >
+                <span className="smallcaps">{checkoutLoading ? 'Loading…' : 'Checkout'}</span>
+                {!checkoutLoading && <span aria-hidden="true">&rarr;</span>}
               </button>
+              {checkoutError && (
+                <p className={styles.cartError}>{checkoutError}</p>
+              )}
               <p className={styles.cartNote}>
-                Each piece is made to order. Lead time 3–6 weeks.
+                Each piece is made to order. Lead time 3–6 weeks. Shipping quoted separately.
               </p>
             </div>
           </>
