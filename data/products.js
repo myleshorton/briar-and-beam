@@ -123,7 +123,7 @@ export const products = [
   },
   {
     id: 6,
-    name: 'The Juniper',
+    name: 'The Noémie',
     price: 2600,
     image: '/images/juniper/juniper-1.jpg',
     images: [
@@ -133,7 +133,7 @@ export const products = [
       '/images/juniper/juniper-4.jpg'
     ],
     category: 'Side Table',
-    description: 'The Juniper is The Livia\'s little sister — no drawer, no fuss, just as elegant and effortlessly simple. She tucks into an entryway or lines a hallway without saying too much, but you\'ll notice her every time you walk by.',
+    description: 'The Noémie is The Livia\'s little sister — no drawer, no fuss, just as elegant and effortlessly simple. She tucks into an entryway or lines a hallway without saying too much, but you\'ll notice her every time you walk by.',
     woodOptions: [
       { name: 'White Oak', priceAdjust: 0 },
       { name: 'Walnut', priceAdjust: 200 }
