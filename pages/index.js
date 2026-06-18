@@ -4,7 +4,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { products } from '../data/products';
 
-const HERO_IMAGE = '/images/julien/julien-1.jpg';
+const HERO_IMAGE = '/images/julien/julien-2.jpg';
 const ATELIER_IMAGE = 'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=1800&q=85&auto=format&fit=crop';
 
 const PROCESS = [
