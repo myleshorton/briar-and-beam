@@ -2,7 +2,7 @@ export const products = [
   {
     id: 1,
     name: 'The Eloise Table',
-    price: 2400,
+    price: 4500,
     image: '/images/eloise/eloise-1.jpg',
     images: [
       '/images/eloise/eloise-1.jpg',
@@ -27,7 +27,7 @@ export const products = [
   {
     id: 2,
     name: 'The Livia',
-    price: 1200,
+    price: 3200,
     image: '/images/livia/livia-1.jpg',
     images: [
       '/images/livia/livia-1.jpg',
@@ -50,7 +50,7 @@ export const products = [
   {
     id: 3,
     name: 'The Alexia',
-    price: 1200,
+    price: 2400,
     image: '/images/alexia/alexia-1.jpg',
     images: [
       '/images/alexia/alexia-1.jpg',
@@ -76,7 +76,7 @@ export const products = [
   {
     id: 4,
     name: 'The Jack',
-    price: 3800,
+    price: 5600,
     image: '/images/julien/julien-1.jpg',
     images: [
       '/images/julien/julien-1.jpg',
@@ -101,7 +101,7 @@ export const products = [
   {
     id: 5,
     name: 'The Julien',
-    price: 4000,
+    price: 5400,
     image: '/images/jack/jack-hero.jpg',
     images: [
       '/images/jack/jack-hero.jpg',
@@ -124,7 +124,7 @@ export const products = [
   {
     id: 6,
     name: 'The Juniper',
-    price: 1800,
+    price: 2600,
     image: '/images/juniper/juniper-1.jpg',
     images: [
       '/images/juniper/juniper-1.jpg',
@@ -149,7 +149,7 @@ export const products = [
   {
     id: 7,
     name: 'The Kate',
-    price: 0,
+    price: 5400,
     image: '/images/kate/kate-1.jpg',
     images: [
       '/images/kate/kate-1.jpg',
@@ -173,7 +173,7 @@ export const products = [
   {
     id: 8,
     name: 'Cutting Boards',
-    price: 75,
+    price: 95,
     image: '/images/boards/walnut-paddle.jpg',
     images: [
       '/images/boards/walnut-paddle.jpg',
@@ -185,10 +185,10 @@ export const products = [
     category: 'Kitchen',
     description: 'Each board is cut, shaped, and finished by hand from a single piece of hardwood — no two alike. Scroll through to find yours, then bring it home. Walnut and leopardwood run a touch dearer for the wood alone; all of them are made for a lifetime of bread, cheese, and slow Sunday mornings.',
     variants: [
-      { name: 'Walnut Paddle', wood: 'Black Walnut', price: 125, dims: 'approx. 20" L x 9" W', image: '/images/boards/walnut-paddle.jpg' },
-      { name: 'Oak & Walnut Paddle', wood: 'White Oak & Walnut', price: 95, dims: 'approx. 18" L x 9" W', image: '/images/boards/oak-walnut-paddle.jpg' },
-      { name: 'White Oak Paddle', wood: 'White Oak', price: 75, dims: 'approx. 16" L x 10" W', image: '/images/boards/white-oak.jpg' },
-      { name: 'Leopardwood Paddle', wood: 'Leopardwood', price: 115, dims: 'approx. 18" L x 9" W', image: '/images/boards/leopard-paddle.jpg' },
+      { name: 'Walnut Paddle', wood: 'Black Walnut', price: 145, dims: 'approx. 20" L x 9" W', image: '/images/boards/walnut-paddle.jpg' },
+      { name: 'Oak & Walnut Paddle', wood: 'White Oak & Walnut', price: 115, dims: 'approx. 18" L x 9" W', image: '/images/boards/oak-walnut-paddle.jpg' },
+      { name: 'White Oak Paddle', wood: 'White Oak', price: 95, dims: 'approx. 16" L x 10" W', image: '/images/boards/white-oak.jpg' },
+      { name: 'Leopardwood Paddle', wood: 'Leopardwood', price: 135, dims: 'approx. 18" L x 9" W', image: '/images/boards/leopard-paddle.jpg' },
       { name: 'Leopardwood Slab', wood: 'Leopardwood', price: 105, dims: 'approx. 14" L x 7" W', image: '/images/boards/leopard-slab.jpg' }
     ],
     details: [
