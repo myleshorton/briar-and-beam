@@ -160,6 +160,85 @@ export default function About() {
         </ol>
       </section>
 
+      {/* What you're paying for */}
+      <section className={styles.craft}>
+        <div className={styles.craftInner}>
+          <span className="reveal smallcaps">What You&rsquo;re Paying For</span>
+          <h2 className={`reveal ${styles.craftTitle}`} style={{ '--delay': '120ms' }}>
+            Solid wood. <em>Real hands.</em>
+          </h2>
+          <div className={`reveal ${styles.craftBody}`} style={{ '--delay': '240ms' }}>
+            <p>Most furniture sold in America is veneer over engineered wood, stapled together, sprayed with lacquer, and shipped from a container. It looks like wood from across the room. It is not wood. It cannot be refinished, cannot be repaired, cannot be passed down. In ten years it ends up at the curb.</p>
+            <p>We don&rsquo;t make any of that.</p>
+            <p>Every Briar &amp; Beam piece is built from solid American hardwood &mdash; new walnut or new white oak, FSC-certified, chosen one board at a time. We join with mortise and tenon, drawbore pegs, hand-cut dovetails. No screws. No metal fasteners. No veneer. No shortcuts.</p>
+            <p>The finish is six coats of hand-rubbed oil and wax, applied slowly by hand over two days. No spray gun. The wood keeps breathing; the finish only deepens with time.</p>
+            <p>Each piece is built front to back by the same hands, made to order, signed and dated when it leaves the workshop. We don&rsquo;t keep inventory. We don&rsquo;t run a production line.</p>
+          </div>
+
+          <div className={`reveal ${styles.compareTable}`} style={{ '--delay': '360ms' }}>
+            <div className={styles.compareHead}>
+              <div></div>
+              <div><span className="smallcaps">Briar &amp; Beam</span></div>
+              <div><span className="smallcaps">Elsie Green</span></div>
+              <div><span className="smallcaps">Roseland USA</span></div>
+              <div><span className="smallcaps">Pottery Barn</span></div>
+            </div>
+
+            <div className={styles.compareRow}>
+              <div className={styles.compareLabel}>Material</div>
+              <div>New FSC-certified solid walnut &amp; white oak</div>
+              <div>Mostly reclaimed pine &amp; mixed woods</div>
+              <div>Solid American hardwood</div>
+              <div>Veneer over MDF &amp; engineered wood</div>
+            </div>
+
+            <div className={styles.compareRow}>
+              <div className={styles.compareLabel}>Where made</div>
+              <div>Louisville, Colorado</div>
+              <div>Mixed &mdash; US studios &amp; imported</div>
+              <div>USA</div>
+              <div>Asia (mass production)</div>
+            </div>
+
+            <div className={styles.compareRow}>
+              <div className={styles.compareLabel}>Construction</div>
+              <div>Mortise &amp; tenon, hand-cut dovetails, drawbore pegs</div>
+              <div>Varies &mdash; mix of joinery &amp; production</div>
+              <div>Traditional joinery</div>
+              <div>Screws, staples, cam locks</div>
+            </div>
+
+            <div className={styles.compareRow}>
+              <div className={styles.compareLabel}>Finish</div>
+              <div>6 coats hand-rubbed oil &amp; wax</div>
+              <div>Distressed, lime-washed, antiqued</div>
+              <div>Hand-rubbed oil</div>
+              <div>Spray lacquer / poly</div>
+            </div>
+
+            <div className={styles.compareRow}>
+              <div className={styles.compareLabel}>Production</div>
+              <div>One piece at a time, made to order</div>
+              <div>Small-batch + curated vintage</div>
+              <div>Made to order, small workshop</div>
+              <div>Factory production runs</div>
+            </div>
+
+            <div className={styles.compareRow}>
+              <div className={styles.compareLabel}>Signed by maker</div>
+              <div>Every piece, dated</div>
+              <div>No</div>
+              <div>Yes</div>
+              <div>No</div>
+            </div>
+          </div>
+
+          <p className={`reveal ${styles.craftClose}`} style={{ '--delay': '480ms' }}>
+            This is why our work costs more than the factory furniture you see at the chain stores. It also costs roughly the same &mdash; and sometimes less &mdash; than smaller atelier brands using reclaimed softwood or imported hardwood. The difference is the wood itself, and the hands that built it.
+          </p>
+        </div>
+      </section>
+
       {/* Sustainability colophon */}
       <section className={styles.coda}>
         <div className={styles.codaInner}>

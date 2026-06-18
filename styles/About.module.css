@@ -494,3 +494,118 @@
   transition: color 220ms var(--ease-out);
 }
 .footer a:hover { color: var(--oxblood); }
+
+/* ---------- Craft / What you're paying for ---------- */
+.craft {
+  background: var(--paper);
+  padding: var(--section) var(--gutter);
+  border-bottom: 1px solid var(--rule);
+}
+
+.craftInner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.craftInner :global(.smallcaps) {
+  color: var(--oxblood);
+  display: block;
+  text-align: center;
+}
+
+.craftTitle {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0.6rem auto 2.6rem;
+  text-align: center;
+}
+.craftTitle em { font-style: italic; color: var(--oxblood); }
+
+.craftBody {
+  max-width: 44rem;
+  margin: 0 auto 3.6rem;
+  font-family: var(--body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.craftBody p { margin-bottom: 1.2rem; }
+
+.compareTable {
+  margin: 0 auto 2.6rem;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--body);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+.compareHead,
+.compareRow {
+  display: grid;
+  grid-template-columns: 9rem 1.4fr 1fr 1fr 1fr;
+  gap: 1.2rem;
+  padding: 1.2rem 0.4rem;
+  align-items: start;
+}
+.compareHead {
+  background: var(--paper-deep);
+  border-bottom: 1px solid var(--rule);
+  padding: 1rem 0.4rem;
+}
+.compareHead :global(.smallcaps) {
+  color: var(--ink);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-align: left;
+  display: block;
+}
+.compareHead div:nth-child(2) :global(.smallcaps) { color: var(--oxblood); }
+
+.compareRow {
+  border-bottom: 1px solid var(--rule);
+}
+.compareRow:last-child { border-bottom: none; }
+
+.compareLabel {
+  font-family: var(--display);
+  font-weight: 500;
+  color: var(--ink);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.compareRow > div:nth-child(2) {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.compareRow > div:not(:nth-child(2)):not(.compareLabel) {
+  color: var(--ink-soft);
+}
+
+@media (max-width: 760px) {
+  .compareTable { font-size: 0.84rem; }
+  .compareHead,
+  .compareRow {
+    grid-template-columns: 7rem 1.3fr 1fr 1fr 1fr;
+    gap: 0.7rem;
+    min-width: 620px;
+  }
+}
+
+.craftClose {
+  max-width: 44rem;
+  margin: 0 auto;
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  font-style: italic;
+  text-align: center;
+}

@@ -100,7 +100,7 @@ export const products = [
   },
   {
     id: 5,
-    name: 'The Livia',
+    name: 'The Liv',
     price: 5400,
     image: '/images/jack/jack-hero.jpg',
     images: [
