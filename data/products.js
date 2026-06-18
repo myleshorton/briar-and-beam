@@ -100,7 +100,7 @@ export const products = [
   },
   {
     id: 5,
-    name: 'The Noémie',
+    name: 'The Josephine',
     price: 5400,
     image: '/images/jack/jack-hero.jpg',
     images: [
