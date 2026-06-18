@@ -26,7 +26,7 @@ export const products = [
   },
   {
     id: 2,
-    name: 'The Livia',
+    name: 'The Julien',
     price: 3200,
     image: '/images/livia/livia-1.jpg',
     images: [
@@ -34,7 +34,7 @@ export const products = [
       '/images/livia/livia-2.jpg'
     ],
     category: 'Side Table',
-    description: 'A small side table drawn from memory — scalloped edges I once fell in love with and never forgot. The Livia is a quiet thing, small enough for a bedside and beautiful enough to live in any room of the house. Built in solid walnut to last well past a single lifetime.',
+    description: 'A small side table drawn from memory — scalloped edges I once fell in love with and never forgot. The Julien is a quiet thing, small enough for a bedside and beautiful enough to live in any room of the house. Built in solid walnut to last well past a single lifetime.',
     woodOptions: [
       { name: 'White Oak', priceAdjust: 0 },
       { name: 'Walnut', priceAdjust: 0 }
@@ -100,7 +100,7 @@ export const products = [
   },
   {
     id: 5,
-    name: 'The Julien',
+    name: 'The Livia',
     price: 5400,
     image: '/images/jack/jack-hero.jpg',
     images: [
@@ -133,7 +133,7 @@ export const products = [
       '/images/juniper/juniper-4.jpg'
     ],
     category: 'Side Table',
-    description: 'The Juniper is The Livia\'s little sister — no drawer, no fuss, just as elegant and effortlessly simple. She tucks into an entryway or lines a hallway without saying too much, but you\'ll notice her every time you walk by.',
+    description: 'The Juniper is The Julien\'s little sister — no drawer, no fuss, just as elegant and effortlessly simple. She tucks into an entryway or lines a hallway without saying too much, but you\'ll notice her every time you walk by.',
     woodOptions: [
       { name: 'White Oak', priceAdjust: 0 },
       { name: 'Walnut', priceAdjust: 200 }
