@@ -149,7 +149,7 @@
 .mainImageWrap {
   position: sticky;
   top: 5.5rem;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   background: var(--paper-deep);
   overflow: hidden;
 }
