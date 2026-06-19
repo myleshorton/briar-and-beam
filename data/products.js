@@ -32,8 +32,7 @@ export const products = [
     images: [
       '/images/livia/livia-1.jpg',
       '/images/livia/livia-2.jpg',
-      '/images/livia/livia-3.jpg',
-      '/images/livia/livia-4.jpg'
+      '/images/livia/livia-3.jpg'
     ],
     category: 'Side Table',
     description: 'A small side table drawn from memory — scalloped edges I once fell in love with and never forgot. The Livia is a quiet thing, small enough for a bedside and beautiful enough to live in any room of the house. Built in solid walnut to last well past a single lifetime.',
