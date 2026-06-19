@@ -706,8 +706,10 @@
 .cardImageHover {
   position: absolute;
   inset: 0;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--paper-deep);
   transition: transform 1400ms var(--ease-out), opacity 700ms var(--ease-out);
 }
 

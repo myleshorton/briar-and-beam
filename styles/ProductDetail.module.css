@@ -194,8 +194,10 @@
 .mainImage {
   position: absolute;
   inset: 0;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--paper-deep);
   animation: fadeIn 800ms var(--ease-out);
 }
 @keyframes fadeIn { from { opacity: 0; transform: scale(1.02); } to { opacity: 1; transform: scale(1); } }
