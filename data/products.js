@@ -31,7 +31,9 @@ export const products = [
     image: '/images/livia/livia-1.jpg',
     images: [
       '/images/livia/livia-1.jpg',
-      '/images/livia/livia-2.jpg'
+      '/images/livia/livia-2.jpg',
+      '/images/livia/livia-3.jpg',
+      '/images/livia/livia-4.jpg'
     ],
     category: 'Side Table',
     description: 'A small side table drawn from memory — scalloped edges I once fell in love with and never forgot. The Livia is a quiet thing, small enough for a bedside and beautiful enough to live in any room of the house. Built in solid walnut to last well past a single lifetime.',
@@ -81,7 +83,9 @@ export const products = [
     images: [
       '/images/julien/julien-1.jpg',
       '/images/julien/julien-2.jpg',
-      '/images/julien/julien-3.jpg'
+      '/images/julien/julien-3.jpg',
+      '/images/julien/julien-4.jpg',
+      '/images/julien/julien-5.jpg'
     ],
     category: 'Coffee Table',
     description: 'The Jack began as a margin sketch in an old carpenter\'s notebook — a low, simple table with no ornamentation, only proportion and purpose. Built in solid walnut with traditional joinery, made for a long life of being lived around.',
