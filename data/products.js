@@ -29,6 +29,7 @@ export const products = [
     name: 'The Livia',
     price: 3200,
     image: '/images/livia/livia-1.jpg',
+    imagePosition: 'center bottom',
     images: [
       '/images/livia/livia-1.jpg',
       '/images/livia/livia-2.jpg',
