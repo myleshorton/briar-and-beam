@@ -86,7 +86,8 @@ export const products = [
       '/images/julien/julien-2.jpg',
       '/images/julien/julien-3.jpg',
       '/images/julien/julien-4.jpg',
-      '/images/julien/julien-5.jpg'
+      '/images/julien/julien-5.jpg',
+      '/images/julien/julien-6.jpg'
     ],
     category: 'Coffee Table',
     description: 'The Jack began as a margin sketch in an old carpenter\'s notebook — a low, simple table with no ornamentation, only proportion and purpose. Built in solid walnut with traditional joinery, made for a long life of being lived around.',
