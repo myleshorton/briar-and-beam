@@ -108,7 +108,9 @@ export const products = [
     image: '/images/jack/jack-hero.jpg',
     images: [
       '/images/jack/jack-hero.jpg',
-      '/images/jack/jack-detail.jpg'
+      '/images/jack/jack-detail.jpg',
+      '/images/jack/jack-3.jpg',
+      '/images/jack/jack-4.jpg'
     ],
     category: 'Coffee Table',
     description: 'A table that lives at the center of a house. Built to carry the weight of a family — dinners and dance parties, the small thunder of children\'s feet, the slow afternoons that go on too long. Six generous drawers for the things worth keeping. Hand-built in solid oak with the kind of quiet character that only deepens with age.',
