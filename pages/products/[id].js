@@ -10,6 +10,7 @@ export default function ProductDetail() {
   const { id } = router.query;
   const [quantity, setQuantity] = useState(1);
   const [selectedWood, setSelectedWood] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(0);
   const [selectedImage, setSelectedImage] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -62,17 +63,30 @@ export default function ProductDetail() {
 
   const images = product.images || [product.image];
   const variant = product.variants ? (product.variants[selectedImage] || product.variants[0]) : null;
+  const size = product.sizeOptions ? (product.sizeOptions[selectedSize] || product.sizeOptions[0]) : null;
   const adjustedPrice = variant
     ? variant.price
-    : product.price + (product.woodOptions?.[selectedWood]?.priceAdjust || 0);
+    : product.price
+      + (product.woodOptions?.[selectedWood]?.priceAdjust || 0)
+      + (size?.priceAdjust || 0);
+  const baseDetails = product.details;
   const details = variant
-    ? [`Wood: ${variant.wood}`, `Dimensions: ${variant.dims}`, ...product.details]
-    : product.details;
+    ? [`Wood: ${variant.wood}`, `Dimensions: ${variant.dims}`, ...baseDetails]
+    : size
+      ? [
+          `Dimensions: ${size.dims}`,
+          ...(size.drawers ? [`Drawers: ${size.drawers}`] : []),
+          ...baseDetails,
+        ]
+      : baseDetails;
 
   const handleAddToCart = () => {
     const cart = JSON.parse(localStorage.getItem('briarBeamCart')) || [];
     const wood = variant ? variant.wood : (product.woodOptions?.[selectedWood]?.name || '');
-    const cartId = variant ? `${product.id}-${variant.name}` : `${product.id}-${wood}`;
+    const sizeName = size?.name || '';
+    const cartId = variant
+      ? `${product.id}-${variant.name}`
+      : `${product.id}-${wood}${sizeName ? `-${sizeName}` : ''}`;
     const existing = cart.find((item) => item.cartId === cartId);
 
     if (existing) {
@@ -81,9 +95,10 @@ export default function ProductDetail() {
       cart.push({
         ...product,
         cartId,
-        name: variant ? variant.name : product.name,
+        name: variant ? variant.name : (sizeName ? `${product.name} (${sizeName})` : product.name),
         image: variant ? variant.image : product.image,
         selectedWood: wood,
+        selectedSize: sizeName,
         price: adjustedPrice,
         quantity,
       });
@@ -226,6 +241,28 @@ export default function ProductDetail() {
             </div>
 
             <div className={`reveal ${styles.actions}`} style={{ '--delay': '440ms' }}>
+              {product.sizeOptions && product.sizeOptions.length > 1 && (
+                <div className={styles.woodGroup}>
+                  <p className="smallcaps">Size</p>
+                  <div className={styles.woodOptions}>
+                    {product.sizeOptions.map((opt, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setSelectedSize(idx)}
+                        className={`${styles.woodOption} ${idx === selectedSize ? styles.woodOptionActive : ''}`}
+                      >
+                        <span><em>{opt.name}</em></span>
+                        {opt.priceAdjust !== 0 && (
+                          <span className={`${styles.woodAdjust} mono`}>
+                            {opt.priceAdjust > 0 ? '+' : '−'}${Math.abs(opt.priceAdjust).toLocaleString()}
+                          </span>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {product.woodOptions && product.woodOptions.length > 1 && (
                 <div className={styles.woodGroup}>
                   <p className="smallcaps">Wood</p>

@@ -92,9 +92,13 @@ export const products = [
       { name: 'White Oak', priceAdjust: 0 },
       { name: 'Walnut', priceAdjust: 0 }
     ],
+    sizeOptions: [
+      { name: 'Petite', dims: '36" L x 22" W x 18" H', priceAdjust: -1800 },
+      { name: 'Standard', dims: '42" L x 26" W x 18" H', priceAdjust: -800 },
+      { name: 'Original', dims: '48" L x 28" W x 18" H', priceAdjust: 0 }
+    ],
     details: [
       'Material: Walnut',
-      'Dimensions: 48" L x 28" W x 18" H',
       'Joinery: Mortise & Tenon',
       'Finish: Oil-based Wax',
       'Lead Time: 3-6 weeks',
@@ -113,15 +117,19 @@ export const products = [
       '/images/jack/jack-4.jpg'
     ],
     category: 'Coffee Table',
-    description: 'A table that lives at the center of a house. Built to carry the weight of a family — dinners and dance parties, the small thunder of children\'s feet, the slow afternoons that go on too long. Six generous drawers for the things worth keeping. Hand-built in solid oak with the kind of quiet character that only deepens with age.',
+    description: 'A table that lives at the center of a house. Built to carry the weight of a family — dinners and dance parties, the small thunder of children\'s feet, the slow afternoons that go on too long. Generous drawer storage for the things worth keeping. Hand-built in solid oak with the kind of quiet character that only deepens with age.',
     woodOptions: [
       { name: 'White Oak', priceAdjust: 0 },
       { name: 'Walnut', priceAdjust: 0 }
     ],
+    sizeOptions: [
+      { name: 'Compact', dims: '48" L x 30" W x 16" H', drawers: 3, priceAdjust: -2200 },
+      { name: 'Standard', dims: '54" L x 36" W x 16" H', drawers: 4, priceAdjust: -1200 },
+      { name: 'Original', dims: '66 3/4" L x 41" W x 16" H', drawers: 6, priceAdjust: 0 }
+    ],
     details: [
       'Material: Solid White Oak',
-      'Dimensions: 66 3/4" L x 41" W x 16" H',
-      'Drawers: 6',
+      'Finish: Oil-based Wax',
       'Lead Time: 3-6 weeks',
       'Available in custom sizes, woods, and finishes'
     ]
