@@ -11,7 +11,7 @@ export default function Returns() {
         <nav className={styles.nav}>
           <Link href="/">Shop</Link>
           <Link href="/about">About</Link>
-          <a href="mailto:brianandbeam@gmail.com">Contact</a>
+          <a href="mailto:briarandbeam@gmail.com">Contact</a>
         </nav>
       </header>
 
@@ -34,7 +34,7 @@ export default function Returns() {
 
         <section className={styles.section}>
           <h2>Returns of Delivered Pieces</h2>
-          <p>Because every piece is built to order, we do not accept returns based on change of mind. Please use our photos, dimensions, and wood options to confirm a piece is right for your space before ordering. We are happy to answer questions, send additional photos, or share wood samples before you purchase &mdash; just email <a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a>.</p>
+          <p>Because every piece is built to order, we do not accept returns based on change of mind. Please use our photos, dimensions, and wood options to confirm a piece is right for your space before ordering. We are happy to answer questions, send additional photos, or share wood samples before you purchase &mdash; just email <a href="mailto:briarandbeam@gmail.com">briarandbeam@gmail.com</a>.</p>
         </section>
 
         <section className={styles.section}>
@@ -43,7 +43,7 @@ export default function Returns() {
           <p>To file a claim:</p>
           <ul>
             <li>Note any visible damage on the delivery receipt <em>before signing</em> (see our <Link href="/shipping">Shipping Policy</Link>).</li>
-            <li>Email <a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a> within 48 hours of delivery with your order number and clear photos of the issue.</li>
+            <li>Email <a href="mailto:briarandbeam@gmail.com">briarandbeam@gmail.com</a> within 48 hours of delivery with your order number and clear photos of the issue.</li>
             <li>Do not dispose of packaging until we&apos;ve resolved the claim &mdash; it&apos;s often needed for carrier claims.</li>
           </ul>
         </section>
@@ -71,7 +71,7 @@ export default function Returns() {
 
         <section className={styles.section}>
           <h2>Questions</h2>
-          <p>We&apos;d rather answer questions before you buy than resolve a problem after. Reach out any time at <a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a>.</p>
+          <p>We&apos;d rather answer questions before you buy than resolve a problem after. Reach out any time at <a href="mailto:briarandbeam@gmail.com">briarandbeam@gmail.com</a>.</p>
         </section>
       </main>
 

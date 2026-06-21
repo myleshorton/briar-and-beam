@@ -132,7 +132,7 @@ export default function Home() {
             <a href="#collection">Collection</a>
             <Link href="/about">Atelier</Link>
             <a href="#process">Process</a>
-            <a href="mailto:brianandbeam@gmail.com">Inquire</a>
+            <a href="mailto:briarandbeam@gmail.com">Inquire</a>
             <Link href="/cart" className={styles.cartBtn} aria-label="View cart">
               <span className="smallcaps">Cart</span>
               <span className={styles.cartCount}>{cartCount.toString().padStart(2, '0')}</span>
@@ -303,8 +303,8 @@ export default function Home() {
           <p className={`reveal ${styles.atelierBody}`} style={{ '--delay': '240ms' }}>
             We accept a small number of custom commissions each season — dining tables, beds, built-ins. Send us a sketch, a photograph you&rsquo;ve been carrying, or just a paragraph. We&rsquo;ll write back.
           </p>
-          <a href="mailto:brianandbeam@gmail.com" className={`reveal ${styles.atelierLink}`} style={{ '--delay': '360ms' }}>
-            <span>brianandbeam@gmail.com</span>
+          <a href="mailto:briarandbeam@gmail.com" className={`reveal ${styles.atelierLink}`} style={{ '--delay': '360ms' }}>
+            <span>briarandbeam@gmail.com</span>
             <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
@@ -331,7 +331,7 @@ export default function Home() {
             <span className="smallcaps">Atelier</span>
             <ul>
               <li><Link href="/about">About</Link></li>
-              <li><a href="mailto:brianandbeam@gmail.com">Custom Work</a></li>
+              <li><a href="mailto:briarandbeam@gmail.com">Custom Work</a></li>
               <li><Link href="/shipping">Shipping</Link></li>
               <li><Link href="/returns">Returns</Link></li>
             </ul>
@@ -339,7 +339,7 @@ export default function Home() {
           <div>
             <span className="smallcaps">Contact</span>
             <ul>
-              <li><a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a></li>
+              <li><a href="mailto:briarandbeam@gmail.com">briarandbeam@gmail.com</a></li>
               <li>By appointment</li>
             </ul>
           </div>

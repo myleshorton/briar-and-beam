@@ -34,7 +34,7 @@ export default function CheckoutSuccess() {
           <p>Your order is in. We&rsquo;ll reach out within <strong>one business day</strong> with your shipping quote and to confirm the details.</p>
           <p>Lead time is <em>3 to 6 weeks</em> &mdash; each piece is made to order by hand.</p>
           <p className={styles.contact}>
-            Questions? <a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a>
+            Questions? <a href="mailto:briarandbeam@gmail.com">briarandbeam@gmail.com</a>
           </p>
         </div>
         <Link href="/" className={styles.back}>

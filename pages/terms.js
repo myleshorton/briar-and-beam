@@ -11,7 +11,7 @@ export default function Terms() {
         <nav className={styles.nav}>
           <Link href="/">Shop</Link>
           <Link href="/about">About</Link>
-          <a href="mailto:brianandbeam@gmail.com">Contact</a>
+          <a href="mailto:briarandbeam@gmail.com">Contact</a>
         </nav>
       </header>
 
@@ -71,7 +71,7 @@ export default function Terms() {
 
         <section className={styles.section}>
           <h2>10. Contact</h2>
-          <p>Questions about these Terms? Email <a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a>.</p>
+          <p>Questions about these Terms? Email <a href="mailto:briarandbeam@gmail.com">briarandbeam@gmail.com</a>.</p>
         </section>
       </main>
 

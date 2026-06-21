@@ -111,7 +111,7 @@ export default function AboutV1() {
           <p>Browse our collection or get in touch to discuss a custom piece.</p>
           <div className={styles.ctaButtons}>
             <Link href="/" className={styles.button}>Shop Now</Link>
-            <a href="mailto:brianandbeam@gmail.com" className={styles.button + ' ' + styles.secondary}>Get in Touch</a>
+            <a href="mailto:briarandbeam@gmail.com" className={styles.button + ' ' + styles.secondary}>Get in Touch</a>
           </div>
         </section>
       </main>
@@ -120,7 +120,7 @@ export default function AboutV1() {
       <footer className={styles.footer}>
         <p>&copy; 2024 Briar & Beam. Handmade with intention.</p>
         <p>
-          <a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a> ·
+          <a href="mailto:briarandbeam@gmail.com">briarandbeam@gmail.com</a> ·
           <Link href="/about">About</Link> ·
           <a href="#sustainability">Sustainability</a>
         </p>

@@ -57,7 +57,7 @@ export default function About() {
           <nav className={styles.nav}>
             <Link href="/">Collection</Link>
             <a href="#story">Atelier</a>
-            <a href="mailto:brianandbeam@gmail.com">Inquire</a>
+            <a href="mailto:briarandbeam@gmail.com">Inquire</a>
           </nav>
         </div>
       </header>
@@ -263,7 +263,7 @@ export default function About() {
             <span className="smallcaps">View the Collection</span>
             <span aria-hidden="true">&rarr;</span>
           </Link>
-          <a href="mailto:brianandbeam@gmail.com" className={styles.ctaSecondary}>
+          <a href="mailto:briarandbeam@gmail.com" className={styles.ctaSecondary}>
             <span className="smallcaps">Inquire about custom work</span>
             <span aria-hidden="true">&rarr;</span>
           </a>

@@ -11,7 +11,7 @@ export default function Privacy() {
         <nav className={styles.nav}>
           <Link href="/">Shop</Link>
           <Link href="/about">About</Link>
-          <a href="mailto:brianandbeam@gmail.com">Contact</a>
+          <a href="mailto:briarandbeam@gmail.com">Contact</a>
         </nav>
       </header>
 
@@ -62,7 +62,7 @@ export default function Privacy() {
 
         <section className={styles.section}>
           <h2>Your Rights</h2>
-          <p>Depending on where you live, you may have the right to request access to, correction of, or deletion of your personal information. To make a request, email <a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a>. California residents: see the CCPA rights below.</p>
+          <p>Depending on where you live, you may have the right to request access to, correction of, or deletion of your personal information. To make a request, email <a href="mailto:briarandbeam@gmail.com">briarandbeam@gmail.com</a>. California residents: see the CCPA rights below.</p>
         </section>
 
         <section className={styles.section}>
@@ -87,7 +87,7 @@ export default function Privacy() {
 
         <section className={styles.section}>
           <h2>Contact</h2>
-          <p>Questions about privacy? Email <a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a>.</p>
+          <p>Questions about privacy? Email <a href="mailto:briarandbeam@gmail.com">briarandbeam@gmail.com</a>.</p>
         </section>
       </main>
 

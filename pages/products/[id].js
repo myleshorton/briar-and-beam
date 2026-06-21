@@ -135,7 +135,7 @@ export default function ProductDetail() {
           <nav className={styles.nav}>
             <Link href="/">Collection</Link>
             <Link href="/about">Atelier</Link>
-            <a href="mailto:brianandbeam@gmail.com">Inquire</a>
+            <a href="mailto:briarandbeam@gmail.com">Inquire</a>
             <Link href="/cart" className={styles.cartLink}>
               <span>Cart</span>
             </Link>
@@ -322,7 +322,7 @@ export default function ProductDetail() {
               <div>
                 <p className="smallcaps">Custom</p>
                 <p>
-                  <a href="mailto:brianandbeam@gmail.com">Inquire about a custom version &rarr;</a>
+                  <a href="mailto:briarandbeam@gmail.com">Inquire about a custom version &rarr;</a>
                 </p>
               </div>
             </div>
@@ -364,7 +364,7 @@ export default function ProductDetail() {
 
       <footer className={styles.footer}>
         <span>&copy; 2026 Briar &amp; Beam &middot; Made by hand</span>
-        <span><a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a></span>
+        <span><a href="mailto:briarandbeam@gmail.com">briarandbeam@gmail.com</a></span>
       </footer>
     </div>
   );

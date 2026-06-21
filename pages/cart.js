@@ -81,7 +81,7 @@ export default function CartPage() {
           <nav className={styles.nav}>
             <Link href="/">Collection</Link>
             <Link href="/about">Atelier</Link>
-            <a href="mailto:brianandbeam@gmail.com">Inquire</a>
+            <a href="mailto:briarandbeam@gmail.com">Inquire</a>
           </nav>
         </div>
       </header>

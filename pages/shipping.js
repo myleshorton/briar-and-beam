@@ -11,7 +11,7 @@ export default function Shipping() {
         <nav className={styles.nav}>
           <Link href="/">Shop</Link>
           <Link href="/about">About</Link>
-          <a href="mailto:brianandbeam@gmail.com">Contact</a>
+          <a href="mailto:briarandbeam@gmail.com">Contact</a>
         </nav>
       </header>
 
@@ -30,7 +30,7 @@ export default function Shipping() {
 
         <section className={styles.section}>
           <h2>Where We Ship</h2>
-          <p>We currently ship to addresses in the contiguous United States. For Alaska, Hawaii, or international delivery, please contact us before ordering at <a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a> for a custom quote.</p>
+          <p>We currently ship to addresses in the contiguous United States. For Alaska, Hawaii, or international delivery, please contact us before ordering at <a href="mailto:briarandbeam@gmail.com">briarandbeam@gmail.com</a> for a custom quote.</p>
         </section>
 
         <section className={styles.section}>
@@ -49,7 +49,7 @@ export default function Shipping() {
 
         <section className={styles.section}>
           <h2>Inspection at Delivery</h2>
-          <p>Please inspect your piece carefully before signing the delivery receipt. If you see any damage to the packaging or the piece itself, <strong>note it clearly on the delivery receipt</strong> before signing and take photographs. This is critical &mdash; without this note, freight carriers will generally not honor damage claims. Email photos and your order number to <a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a> within 48 hours of delivery and we will make it right.</p>
+          <p>Please inspect your piece carefully before signing the delivery receipt. If you see any damage to the packaging or the piece itself, <strong>note it clearly on the delivery receipt</strong> before signing and take photographs. This is critical &mdash; without this note, freight carriers will generally not honor damage claims. Email photos and your order number to <a href="mailto:briarandbeam@gmail.com">briarandbeam@gmail.com</a> within 48 hours of delivery and we will make it right.</p>
         </section>
 
         <section className={styles.section}>
@@ -64,7 +64,7 @@ export default function Shipping() {
 
         <section className={styles.section}>
           <h2>Questions</h2>
-          <p>Shipping questions? Email <a href="mailto:brianandbeam@gmail.com">brianandbeam@gmail.com</a> before ordering so we can make sure a piece will work for your space and your delivery situation.</p>
+          <p>Shipping questions? Email <a href="mailto:briarandbeam@gmail.com">briarandbeam@gmail.com</a> before ordering so we can make sure a piece will work for your space and your delivery situation.</p>
         </section>
       </main>
 
