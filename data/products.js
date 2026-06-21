@@ -33,7 +33,8 @@ export const products = [
     images: [
       '/images/livia/livia-1.jpg',
       '/images/livia/livia-2.jpg',
-      '/images/livia/livia-3.jpg'
+      '/images/livia/livia-3.jpg',
+      '/images/livia/livia-4.jpg'
     ],
     category: 'Side Table',
     description: 'A small side table drawn from memory — scalloped edges I once fell in love with and never forgot. The Livia is a quiet thing, small enough for a bedside and beautiful enough to live in any room of the house. Built to last well past a single lifetime.',
@@ -148,7 +149,8 @@ export const products = [
       '/images/juniper/juniper-1.jpg',
       '/images/juniper/juniper-2.jpg',
       '/images/juniper/juniper-3.jpg',
-      '/images/juniper/juniper-4.jpg'
+      '/images/juniper/juniper-4.jpg',
+      '/images/juniper/juniper-5.jpg'
     ],
     category: 'Side Table',
     description: 'The Noemmie is The Livia\'s little sister — no drawer, no fuss, just as elegant and effortlessly simple. She tucks into an entryway or lines a hallway without saying too much, but you\'ll notice her every time you walk by.',
