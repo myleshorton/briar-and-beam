@@ -14,10 +14,10 @@ export const products = [
     description: 'Built for long dinners and the late mornings that follow. A solid white oak dining table with room for six, a matte hand-rubbed finish, edges softened just enough to invite a hand. Made to hold a family and the stories it gathers, for as long as you\'ll have it.',
     woodOptions: [
       { name: 'White Oak', priceAdjust: 0 },
-      { name: 'Walnut', priceAdjust: 200 }
+      { name: 'Walnut', priceAdjust: 700 }
     ],
     details: [
-      'Material: Solid White Oak',
+      'Material: White Oak or Walnut',
       'Dimensions: 60" L x 40" W x 30" H',
       'Seats: 6',
       'Finish: Oil-based Wax',
@@ -27,7 +27,7 @@ export const products = [
   {
     id: 2,
     name: 'The Livia',
-    price: 3200,
+    price: 2800,
     image: '/images/livia/livia-1.jpg',
     images: [
       '/images/livia/livia-1.jpg',
@@ -35,13 +35,13 @@ export const products = [
       '/images/livia/livia-3.jpg'
     ],
     category: 'Side Table',
-    description: 'A small side table drawn from memory — scalloped edges I once fell in love with and never forgot. The Livia is a quiet thing, small enough for a bedside and beautiful enough to live in any room of the house. Built in solid walnut to last well past a single lifetime.',
+    description: 'A small side table drawn from memory — scalloped edges I once fell in love with and never forgot. The Livia is a quiet thing, small enough for a bedside and beautiful enough to live in any room of the house. Built to last well past a single lifetime.',
     woodOptions: [
-      { name: 'White Oak', priceAdjust: 0 },
-      { name: 'Walnut', priceAdjust: 0 }
+      { name: 'Beech', priceAdjust: 0 },
+      { name: 'Walnut', priceAdjust: 400 }
     ],
     details: [
-      'Material: Walnut',
+      'Material: Beech or Walnut',
       'Dimensions: 28 1/2" L x 16" W x 26 7/8" H',
       'Finish: Oil-based Wax',
       'Lead Time: 3-6 weeks',
@@ -62,10 +62,10 @@ export const products = [
     description: 'Something less predictable than an end table — a pair, because sometimes two is better than one. The Alexia nestles beside a couch or tucks together as a nightstand. Quiet, considered, and a little unexpected.',
     woodOptions: [
       { name: 'White Oak', priceAdjust: 0 },
-      { name: 'Walnut', priceAdjust: 200 }
+      { name: 'Walnut', priceAdjust: 400 }
     ],
     details: [
-      'Material: Solid White Oak',
+      'Material: White Oak or Walnut',
       'Dimensions (large): 16 1/2" Diameter x 22" H',
       'Dimensions (small): 13" Diameter x 19" H',
       'Quantity: Pair',
@@ -77,7 +77,7 @@ export const products = [
   {
     id: 4,
     name: 'The Jack',
-    price: 5600,
+    price: 4800,
     image: '/images/julien/julien-1.jpg',
     images: [
       '/images/julien/julien-1.jpg',
@@ -90,7 +90,7 @@ export const products = [
     description: 'The Jack began as a margin sketch in an old carpenter\'s notebook — a low, simple table with no ornamentation, only proportion and purpose. Built in solid walnut with traditional joinery, made for a long life of being lived around.',
     woodOptions: [
       { name: 'White Oak', priceAdjust: 0 },
-      { name: 'Walnut', priceAdjust: 0 }
+      { name: 'Walnut', priceAdjust: 800 }
     ],
     sizeOptions: [
       { name: 'Petite', dims: '36" L x 22" W x 18" H', priceAdjust: -1800 },
@@ -98,7 +98,7 @@ export const products = [
       { name: 'Original', dims: '48" L x 28" W x 18" H', priceAdjust: 0 }
     ],
     details: [
-      'Material: Walnut',
+      'Material: White Oak or Walnut',
       'Joinery: Mortise & Tenon',
       'Finish: Oil-based Wax',
       'Lead Time: 3-6 weeks',
@@ -120,7 +120,7 @@ export const products = [
     description: 'A table that lives at the center of a house. Built to carry the weight of a family — dinners and dance parties, the small thunder of children\'s feet, the slow afternoons that go on too long. Generous drawer storage for the things worth keeping. Hand-built in solid oak with the kind of quiet character that only deepens with age.',
     woodOptions: [
       { name: 'White Oak', priceAdjust: 0 },
-      { name: 'Walnut', priceAdjust: 0 }
+      { name: 'Walnut', priceAdjust: 800 }
     ],
     sizeOptions: [
       { name: 'Compact', dims: '48" L x 30" W x 16" H', drawers: 3, priceAdjust: -2200 },
@@ -128,7 +128,7 @@ export const products = [
       { name: 'Original', dims: '66 3/4" L x 41" W x 16" H', drawers: 6, priceAdjust: 0 }
     ],
     details: [
-      'Material: Solid White Oak',
+      'Material: White Oak or Walnut',
       'Finish: Oil-based Wax',
       'Lead Time: 3-6 weeks',
       'Available in custom sizes, woods, and finishes'
@@ -137,7 +137,7 @@ export const products = [
   {
     id: 6,
     name: 'The Noemmie',
-    price: 2600,
+    price: 2200,
     image: '/images/juniper/juniper-1.jpg',
     images: [
       '/images/juniper/juniper-1.jpg',
@@ -148,11 +148,11 @@ export const products = [
     category: 'Side Table',
     description: 'The Noemmie is The Livia\'s little sister — no drawer, no fuss, just as elegant and effortlessly simple. She tucks into an entryway or lines a hallway without saying too much, but you\'ll notice her every time you walk by.',
     woodOptions: [
-      { name: 'White Oak', priceAdjust: 0 },
-      { name: 'Walnut', priceAdjust: 200 }
+      { name: 'Beech', priceAdjust: 0 },
+      { name: 'Walnut', priceAdjust: 400 }
     ],
     details: [
-      'Material: Walnut',
+      'Material: Beech or Walnut',
       'Dimensions: 26" L x 12 1/4" W x 24 3/4" H',
       'Finish: Oil-based Wax',
       'Lead Time: 3-6 weeks',
@@ -174,10 +174,10 @@ export const products = [
     description: 'The Kate is for the space you always mean to do something with. That bare wall in the entryway, that stretch of hallway that feels too empty. A console with the kind of quiet presence that makes a room feel like someone thought about it — because you did.',
     woodOptions: [
       { name: 'White Oak', priceAdjust: 0 },
-      { name: 'Walnut', priceAdjust: 0 }
+      { name: 'Walnut', priceAdjust: 500 }
     ],
     details: [
-      'Material: Solid White Oak',
+      'Material: White Oak or Walnut',
       'Dimensions: TBD',
       'Finish: Oil-based Wax',
       'Lead Time: 3-6 weeks'
