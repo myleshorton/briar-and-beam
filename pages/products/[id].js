@@ -274,8 +274,10 @@ export default function ProductDetail() {
                         className={`${styles.woodOption} ${idx === selectedWood ? styles.woodOptionActive : ''}`}
                       >
                         <span><em>{opt.name}</em></span>
-                        {opt.priceAdjust > 0 && (
-                          <span className={`${styles.woodAdjust} mono`}>+${opt.priceAdjust}</span>
+                        {opt.priceAdjust !== 0 && (
+                          <span className={`${styles.woodAdjust} mono`}>
+                            {opt.priceAdjust > 0 ? '+' : '−'}${Math.abs(opt.priceAdjust).toLocaleString()}
+                          </span>
                         )}
                       </button>
                     ))}
