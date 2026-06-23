@@ -28,7 +28,7 @@ export const products = [
   {
     id: 2,
     name: 'The Livia',
-    price: 2800,
+    price: 2650,
     image: '/images/livia/livia-1.jpg',
     images: [
       '/images/livia/livia-1.jpg',
@@ -40,7 +40,7 @@ export const products = [
     description: 'A small side table drawn from memory — scalloped edges I once fell in love with and never forgot. The Livia is a quiet thing, small enough for a bedside and beautiful enough to live in any room of the house. Built to last well past a single lifetime.',
     woodOptions: [
       { name: 'Beech', priceAdjust: 0 },
-      { name: 'Walnut', priceAdjust: 400 }
+      { name: 'Walnut', priceAdjust: 350 }
     ],
     details: [
       'Material: Beech or Walnut',
@@ -53,7 +53,7 @@ export const products = [
   {
     id: 3,
     name: 'The Alexia',
-    price: 2400,
+    price: 2100,
     image: '/images/alexia/alexia-1.jpg',
     images: [
       '/images/alexia/alexia-1.jpg',
@@ -65,7 +65,7 @@ export const products = [
     woodOptions: [
       { name: 'White Oak', priceAdjust: 0 },
       { name: 'Walnut', priceAdjust: 400 },
-      { name: 'Beech', priceAdjust: -400 }
+      { name: 'Beech', priceAdjust: -300 }
     ],
     details: [
       'Material: Beech, White Oak, or Walnut',
@@ -143,7 +143,7 @@ export const products = [
   {
     id: 6,
     name: 'The Noemmie',
-    price: 2200,
+    price: 2100,
     image: '/images/juniper/juniper-1.jpg',
     images: [
       '/images/juniper/juniper-1.jpg',
@@ -156,7 +156,7 @@ export const products = [
     description: 'The Noemmie is The Livia\'s little sister — no drawer, no fuss, just as elegant and effortlessly simple. She tucks into an entryway or lines a hallway without saying too much, but you\'ll notice her every time you walk by.',
     woodOptions: [
       { name: 'Beech', priceAdjust: 0 },
-      { name: 'Walnut', priceAdjust: 400 }
+      { name: 'Walnut', priceAdjust: 300 }
     ],
     details: [
       'Material: Beech or Walnut',
