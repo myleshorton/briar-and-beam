@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { products } from '../data/products';
+import Seo, { organizationJsonLd, localBusinessJsonLd } from '../components/Seo';
 
 const HERO_IMAGE = '/images/julien/julien-1.jpg';
 const ATELIER_IMAGE = 'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=1800&q=85&auto=format&fit=crop';
@@ -112,10 +113,12 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Briar &amp; Beam — Heirloom Furniture, Made by Hand</title>
-        <meta name="description" content="Handcrafted hardwood furniture from a small workshop. Mortise-and-tenon joinery, oil finishes, and pieces built to last generations." />
-      </Head>
+      <Seo
+        title="Heirloom American Hardwood Furniture, Made by Hand in Colorado"
+        description="Handcrafted solid walnut, white oak, and beech furniture from a small two-person atelier in Louisville, Colorado. Mortise & tenon joinery, hand-rubbed oil finishes. Built once. Kept always."
+        path="/"
+        jsonLd={[organizationJsonLd, localBusinessJsonLd]}
+      />
 
       {/* Scroll progress hairline */}
       <div className={styles.progress} style={{ transform: `scaleX(${progress})` }} />

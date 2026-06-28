@@ -1,9 +1,16 @@
 import Link from 'next/link';
 import styles from '../styles/Policy.module.css';
+import Seo from '../components/Seo';
 
 export default function Privacy() {
   return (
     <div className={styles.container}>
+      <Seo
+        title="Privacy Policy"
+        description="Privacy policy for Briar & Beam — what we collect, how we use it, and the choices you have."
+        path="/privacy"
+        noindex={true}
+      />
       <header className={styles.header}>
         <div className={styles.logo}>
           <Link href="/"><h1>Briar & Beam</h1></Link>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import styles from '../styles/About.module.css';
+import Seo, { organizationJsonLd } from '../components/Seo';
 
 const HERO_IMAGE = '/images/atelier/makers-wide.jpg';
 const PORTRAIT_IMAGE = '/images/atelier/makers-portrait.jpg';
@@ -41,9 +42,12 @@ export default function About() {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>The Atelier — Briar &amp; Beam</title>
-      </Head>
+      <Seo
+        title="The Atelier — Two People, Solid Wood, Made by Hand"
+        description="The story behind Briar & Beam — a small Colorado atelier making heirloom American hardwood furniture by hand. Solid walnut, white oak, beech. Traditional joinery. Built to last generations."
+        path="/about"
+        jsonLd={organizationJsonLd}
+      />
 
       <div className={styles.progress} style={{ transform: `scaleX(${progress})` }} />
 

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { products } from '../../data/products';
 import styles from '../../styles/ProductDetail.module.css';
+import Seo, { productJsonLd, breadcrumbJsonLd } from '../../components/Seo';
 
 export default function ProductDetail() {
   const router = useRouter();
@@ -118,10 +119,20 @@ export default function ProductDetail() {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>{product.name} — Briar &amp; Beam</title>
-        <meta name="description" content={product.description.slice(0, 160)} />
-      </Head>
+      <Seo
+        title={`${product.name} — Handmade ${product.category} | Solid Hardwood`}
+        description={`${product.name}: ${product.description.slice(0, 140)}`}
+        path={`/products/${product.id}`}
+        image={product.image}
+        type="product"
+        jsonLd={[
+          productJsonLd(product, size, product.woodOptions?.[selectedWood]),
+          breadcrumbJsonLd([
+            { name: 'Collection', path: '/' },
+            { name: product.name, path: `/products/${product.id}` },
+          ]),
+        ]}
+      />
 
       <div className={styles.progress} style={{ transform: `scaleX(${progress})` }} />
 

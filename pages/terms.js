@@ -1,9 +1,16 @@
 import Link from 'next/link';
 import styles from '../styles/Policy.module.css';
+import Seo from '../components/Seo';
 
 export default function Terms() {
   return (
     <div className={styles.container}>
+      <Seo
+        title="Terms of Service"
+        description="Terms of service for Briar & Beam — orders, acceptance, and warranties for our handmade hardwood furniture."
+        path="/terms"
+        noindex={true}
+      />
       <header className={styles.header}>
         <div className={styles.logo}>
           <Link href="/"><h1>Briar & Beam</h1></Link>

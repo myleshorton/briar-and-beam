@@ -69,6 +69,9 @@ export default function CartPage() {
     <div className={styles.container}>
       <Head>
         <title>Cart — Briar &amp; Beam</title>
+        <meta name="description" content="Your selected pieces from Briar & Beam — heirloom American hardwood furniture, made to order." />
+        <meta name="robots" content="noindex,nofollow" />
+        <link rel="canonical" href="https://briarandbeam.com/cart" />
       </Head>
 
       <header className={styles.header}>

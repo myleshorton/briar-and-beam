@@ -1,9 +1,15 @@
 import Link from 'next/link';
 import styles from '../styles/Policy.module.css';
+import Seo from '../components/Seo';
 
 export default function Returns() {
   return (
     <div className={styles.container}>
+      <Seo
+        title="Returns"
+        description="Return policy for Briar & Beam — every piece is made to order. We answer questions before you buy and stand behind our craft after."
+        path="/returns"
+      />
       <header className={styles.header}>
         <div className={styles.logo}>
           <Link href="/"><h1>Briar & Beam</h1></Link>

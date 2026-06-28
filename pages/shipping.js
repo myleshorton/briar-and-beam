@@ -1,9 +1,15 @@
 import Link from 'next/link';
 import styles from '../styles/Policy.module.css';
+import Seo from '../components/Seo';
 
 export default function Shipping() {
   return (
     <div className={styles.container}>
+      <Seo
+        title="Shipping"
+        description="White-glove shipping policy for Briar & Beam handmade furniture. Made-to-order pieces ship in 3-6 weeks, delivered with care across the contiguous United States."
+        path="/shipping"
+      />
       <header className={styles.header}>
         <div className={styles.logo}>
           <Link href="/"><h1>Briar & Beam</h1></Link>
