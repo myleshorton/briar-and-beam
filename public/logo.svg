@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 96" role="img" aria-label="Briar & Beam">
+  <style>
+    .wordmark { font-family: 'Fraunces', 'EB Garamond', Georgia, 'Times New Roman', serif; font-weight: 500; letter-spacing: -0.01em; }
+    .amp { font-style: italic; font-weight: 400; fill: #B89A55; }
+    .word { fill: #1B1410; }
+  </style>
+  <text x="260" y="62" text-anchor="middle" class="wordmark" font-size="56">
+    <tspan class="word">Briar</tspan>
+    <tspan class="amp" dx="14" dy="2">&amp;</tspan>
+    <tspan class="word" dx="12" dy="-2">Beam</tspan>
+  </text>
+</svg>

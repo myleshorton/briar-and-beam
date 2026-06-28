@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Briar & Beam">
+  <rect width="64" height="64" rx="10" fill="#1B1410"/>
+  <text x="32" y="48" text-anchor="middle"
+        font-family="Fraunces, 'EB Garamond', Georgia, 'Times New Roman', serif"
+        font-style="italic" font-weight="400" font-size="48" fill="#B89A55">&amp;</text>
+</svg>

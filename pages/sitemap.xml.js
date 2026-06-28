@@ -1,15 +1,14 @@
 import { products } from '../data/products';
+import { posts } from '../data/journal';
 
 const SITE_URL = 'https://briarandbeam.com';
 
 const STATIC_PAGES = [
   { path: '/', priority: 1.0, changefreq: 'weekly' },
   { path: '/about', priority: 0.9, changefreq: 'monthly' },
-  { path: '/cart', priority: 0.4, changefreq: 'monthly' },
+  { path: '/journal', priority: 0.9, changefreq: 'weekly' },
   { path: '/shipping', priority: 0.5, changefreq: 'monthly' },
   { path: '/returns', priority: 0.5, changefreq: 'monthly' },
-  { path: '/privacy', priority: 0.3, changefreq: 'yearly' },
-  { path: '/terms', priority: 0.3, changefreq: 'yearly' },
 ];
 
 function generateSitemap() {
@@ -26,6 +25,12 @@ function generateSitemap() {
       lastmod: today,
       priority: 0.8,
       changefreq: 'weekly',
+    })),
+    ...posts.map((p) => ({
+      loc: `${SITE_URL}/journal/${p.slug}`,
+      lastmod: p.date,
+      priority: 0.7,
+      changefreq: 'monthly',
     })),
   ];
 

@@ -44,9 +44,12 @@ export default function Seo({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
 
-      {/* Favicon (will use SVG placeholder until proper favicon added) */}
-      <link rel="icon" href="/favicon.ico" />
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      {/* Favicon */}
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
       {/* Theme color */}
       <meta name="theme-color" content="#f7f3ec" />
@@ -130,6 +133,29 @@ export function productJsonLd(product, selectedSize = null, selectedWood = null)
       itemCondition: 'https://schema.org/NewCondition',
       seller: { '@type': 'Organization', name: SITE_NAME },
     },
+  };
+}
+
+export function articleJsonLd(post) {
+  const url = `${SITE_URL}/journal/${post.slug}`;
+  const image = post.image.startsWith('http') ? post.image : `${SITE_URL}${post.image}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    image: [image],
+    datePublished: post.date,
+    dateModified: post.date,
+    author: { '@type': 'Person', name: post.author },
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      logo: { '@type': 'ImageObject', url: DEFAULT_OG_IMAGE },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    articleSection: post.category,
+    keywords: (post.keywords || []).join(', '),
   };
 }
 

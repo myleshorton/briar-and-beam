@@ -134,6 +134,7 @@ export default function Home() {
           <nav className={styles.nav}>
             <a href="#collection">Collection</a>
             <Link href="/about">Atelier</Link>
+            <Link href="/journal">Journal</Link>
             <a href="#process">Process</a>
             <a href="mailto:briarandbeam@gmail.com">Inquire</a>
             <Link href="/cart" className={styles.cartBtn} aria-label="View cart">
