@@ -115,7 +115,7 @@ export default function Home() {
     <div className={styles.container}>
       <Seo
         title="Heirloom American Hardwood Furniture, Made by Hand in Colorado"
-        description="Handcrafted solid walnut, white oak, and beech furniture from a small two-person atelier in Louisville, Colorado. Mortise & tenon joinery, hand-rubbed oil finishes. Built once. Kept always."
+        description="Handcrafted solid walnut and white oak furniture from a small two-person atelier in Louisville, Colorado. Mortise & tenon joinery, hand-rubbed oil finishes. Built once. Kept always."
         path="/"
         jsonLd={[organizationJsonLd, localBusinessJsonLd]}
       />

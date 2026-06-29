@@ -44,7 +44,7 @@ export default function About() {
     <div className={styles.container}>
       <Seo
         title="The Atelier — Two People, Solid Wood, Made by Hand"
-        description="The story behind Briar & Beam — a small Colorado atelier making heirloom American hardwood furniture by hand. Solid walnut, white oak, beech. Traditional joinery. Built to last generations."
+        description="The story behind Briar & Beam — a small Colorado atelier making heirloom American hardwood furniture by hand. Solid walnut and white oak. Traditional joinery. Built to last generations."
         path="/about"
         jsonLd={organizationJsonLd}
       />

@@ -3,7 +3,7 @@ import Head from 'next/head';
 const SITE_URL = 'https://briarandbeam.com';
 const SITE_NAME = 'Briar & Beam';
 const DEFAULT_DESCRIPTION =
-  'Heirloom American hardwood furniture, made by hand in Colorado. Solid walnut, white oak, and beech — mortise & tenon joinery, hand-rubbed oil finishes. Built once. Kept always.';
+  'Heirloom American hardwood furniture, made by hand in Colorado. Solid walnut and white oak — mortise & tenon joinery, hand-rubbed oil finishes. Built once. Kept always.';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/images/julien/julien-1.jpg`;
 
 export default function Seo({
