@@ -62,6 +62,13 @@ export default function JournalPost() {
         path={`/journal/${post.slug}`}
         image={post.image}
         type="article"
+        article={{
+          published: post.date,
+          modified: post.date,
+          author: post.author,
+          section: post.category,
+          tags: post.keywords,
+        }}
         jsonLd={[
           articleJsonLd(post),
           breadcrumbJsonLd([

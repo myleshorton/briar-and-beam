@@ -14,6 +14,7 @@ export default function Seo({
   type = 'website',
   jsonLd,
   noindex = false,
+  article,
 }) {
   const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} — Heirloom American Hardwood Furniture`;
   const url = `${SITE_URL}${path}`;
@@ -37,6 +38,19 @@ export default function Seo({
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="1200" />
       <meta property="og:locale" content="en_US" />
+
+      {/* Article-specific OG (for journal posts) */}
+      {article && (
+        <>
+          <meta property="article:published_time" content={article.published} />
+          {article.modified && <meta property="article:modified_time" content={article.modified} />}
+          {article.author && <meta property="article:author" content={article.author} />}
+          {article.section && <meta property="article:section" content={article.section} />}
+          {(article.tags || []).map((t) => (
+            <meta property="article:tag" content={t} key={t} />
+          ))}
+        </>
+      )}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -84,6 +98,16 @@ export const organizationJsonLd = {
   sameAs: [],
 };
 
+export const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: DEFAULT_DESCRIPTION,
+  inLanguage: 'en-US',
+  publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+};
+
 export const localBusinessJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
@@ -107,7 +131,7 @@ export function productJsonLd(product, selectedSize = null, selectedWood = null)
   const woodAdjust = selectedWood?.priceAdjust || 0;
   const sizeAdjust = selectedSize?.priceAdjust || 0;
   const price = product.price + woodAdjust + sizeAdjust;
-  const productUrl = `${SITE_URL}/products/${product.id}`;
+  const productUrl = `${SITE_URL}/products/${product.slug || product.id}`;
 
   return {
     '@context': 'https://schema.org',

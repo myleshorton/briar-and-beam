@@ -8,7 +8,7 @@ import Seo, { productJsonLd, breadcrumbJsonLd } from '../../components/Seo';
 
 export default function ProductDetail() {
   const router = useRouter();
-  const { id } = router.query;
+  const { slug } = router.query;
   const [quantity, setQuantity] = useState(1);
   const [selectedWood, setSelectedWood] = useState(0);
   const [selectedSize, setSelectedSize] = useState(0);
@@ -44,11 +44,11 @@ export default function ProductDetail() {
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, [id]);
+  }, [slug]);
 
   if (!router.isReady) return null;
 
-  const product = products.find((p) => p.id === parseInt(id));
+  const product = products.find((p) => p.slug === slug);
   if (!product) {
     return (
       <div className={styles.notFound}>
@@ -122,14 +122,14 @@ export default function ProductDetail() {
       <Seo
         title={`${product.name} — Handmade ${product.category} | Solid Hardwood`}
         description={`${product.name}: ${product.description.slice(0, 140)}`}
-        path={`/products/${product.id}`}
+        path={`/products/${product.slug}`}
         image={product.image}
         type="product"
         jsonLd={[
           productJsonLd(product, size, product.woodOptions?.[selectedWood]),
           breadcrumbJsonLd([
             { name: 'Collection', path: '/' },
-            { name: product.name, path: `/products/${product.id}` },
+            { name: product.name, path: `/products/${product.slug}` },
           ]),
         ]}
       />
@@ -354,7 +354,7 @@ export default function ProductDetail() {
           {otherProducts.map((p, i) => (
             <Link
               key={p.id}
-              href={`/products/${p.id}`}
+              href={`/products/${p.slug}`}
               className={`reveal ${styles.relatedCard}`}
               style={{ '--delay': `${i * 80}ms` }}
             >

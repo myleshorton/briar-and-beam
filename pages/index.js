@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { products } from '../data/products';
-import Seo, { organizationJsonLd, localBusinessJsonLd } from '../components/Seo';
+import Seo, { organizationJsonLd, localBusinessJsonLd, websiteJsonLd } from '../components/Seo';
 
 const HERO_IMAGE = '/images/julien/julien-1.jpg';
 const ATELIER_IMAGE = 'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=1800&q=85&auto=format&fit=crop';
@@ -117,7 +117,7 @@ export default function Home() {
         title="Heirloom American Hardwood Furniture, Made by Hand in Colorado"
         description="Handcrafted solid walnut and white oak furniture from a small two-person atelier in Louisville, Colorado. Mortise & tenon joinery, hand-rubbed oil finishes. Built once. Kept always."
         path="/"
-        jsonLd={[organizationJsonLd, localBusinessJsonLd]}
+        jsonLd={[websiteJsonLd, organizationJsonLd, localBusinessJsonLd]}
       />
 
       {/* Scroll progress hairline */}
@@ -201,7 +201,7 @@ export default function Home() {
         </div>
 
         <div className={styles.featuredInner}>
-          <Link href={`/products/${featured.id}`} className={`reveal ${styles.featuredImageWrap}`}>
+          <Link href={`/products/${featured.slug}`} className={`reveal ${styles.featuredImageWrap}`}>
             <div className={styles.featuredImage} style={{ backgroundImage: `url(${featured.image})` }} />
             <div className={styles.featuredOverlay}>
               <span className="smallcaps">View piece &rarr;</span>
@@ -217,7 +217,7 @@ export default function Home() {
             <p className={styles.featuredDescription}>{featured.description}</p>
             <div className={styles.featuredMeta}>
               <span className={styles.featuredPrice}>${featured.price.toLocaleString()}</span>
-              <Link href={`/products/${featured.id}`} className={styles.featuredLink}>
+              <Link href={`/products/${featured.slug}`} className={styles.featuredLink}>
                 <span>Read the full piece</span>
                 <span aria-hidden="true">&rarr;</span>
               </Link>
@@ -238,7 +238,7 @@ export default function Home() {
             return (
               <Link
                 key={p.id}
-                href={`/products/${p.id}`}
+                href={`/products/${p.slug}`}
                 className={`reveal ${styles.card}`}
                 style={{ '--delay': `${i * 80}ms` }}
               >
@@ -327,7 +327,7 @@ export default function Home() {
             <span className="smallcaps">Collection</span>
             <ul>
               {products.slice(0, 5).map((p) => (
-                <li key={p.id}><Link href={`/products/${p.id}`}>{p.name}</Link></li>
+                <li key={p.id}><Link href={`/products/${p.slug}`}>{p.name}</Link></li>
               ))}
             </ul>
           </div>

@@ -1,6 +1,7 @@
 export const products = [
   {
     id: 1,
+    slug: 'the-eloise',
     name: 'The Eloise Table',
     price: 4500,
     image: '/images/eloise/eloise-1.jpg',
@@ -26,6 +27,7 @@ export const products = [
   },
   {
     id: 2,
+    slug: 'the-livia',
     name: 'The Livia',
     price: 3000,
     image: '/images/livia/livia-1.jpg',
@@ -47,8 +49,9 @@ export const products = [
   },
   {
     id: 3,
+    slug: 'the-alexia',
     name: 'The Alexia',
-    price: 2100,
+    price: 2500,
     image: '/images/alexia/alexia-1.jpg',
     images: [
       '/images/alexia/alexia-1.jpg',
@@ -56,13 +59,9 @@ export const products = [
       '/images/alexia/alexia-3.jpg'
     ],
     category: 'Nesting Tables',
-    description: 'Something less predictable than an end table — a pair, because sometimes two is better than one. The Alexia nestles beside a couch or tucks together as a nightstand. Quiet, considered, and a little unexpected.',
-    woodOptions: [
-      { name: 'White Oak', priceAdjust: 0 },
-      { name: 'Walnut', priceAdjust: 400 }
-    ],
+    description: 'Something less predictable than an end table — a pair, because sometimes two is better than one. The Alexia nestles beside a couch or tucks together as a nightstand. Quiet, considered, and a little unexpected. Built in solid walnut.',
     details: [
-      'Material: White Oak or Walnut',
+      'Material: Solid Walnut',
       'Dimensions (large): 16 1/2" Diameter x 22" H',
       'Dimensions (small): 13" Diameter x 19" H',
       'Quantity: Pair',
@@ -73,8 +72,9 @@ export const products = [
   },
   {
     id: 4,
+    slug: 'the-jack',
     name: 'The Jack',
-    price: 4800,
+    price: 5600,
     image: '/images/julien/julien-1.jpg',
     images: [
       '/images/julien/julien-1.jpg',
@@ -86,17 +86,13 @@ export const products = [
     ],
     category: 'Coffee Table',
     description: 'The Jack began as a margin sketch in an old carpenter\'s notebook — a low, simple table with no ornamentation, only proportion and purpose. Built in solid walnut with traditional joinery, made for a long life of being lived around.',
-    woodOptions: [
-      { name: 'White Oak', priceAdjust: 0 },
-      { name: 'Walnut', priceAdjust: 800 }
-    ],
     sizeOptions: [
       { name: 'Petite', dims: '36" L x 22" W x 18" H', priceAdjust: -1800 },
       { name: 'Standard', dims: '42" L x 26" W x 18" H', priceAdjust: -800 },
       { name: 'Original', dims: '48" L x 28" W x 18" H', priceAdjust: 0 }
     ],
     details: [
-      'Material: White Oak or Walnut',
+      'Material: Solid Walnut',
       'Joinery: Mortise & Tenon',
       'Finish: Oil-based Wax',
       'Lead Time: 3-6 weeks',
@@ -105,6 +101,7 @@ export const products = [
   },
   {
     id: 5,
+    slug: 'the-josephine',
     name: 'The Josephine',
     price: 5400,
     image: '/images/jack/jack-hero.jpg',
@@ -134,6 +131,7 @@ export const products = [
   },
   {
     id: 6,
+    slug: 'the-noemmie',
     name: 'The Noemmie',
     price: 2400,
     image: '/images/juniper/juniper-1.jpg',
@@ -156,6 +154,7 @@ export const products = [
   },
   {
     id: 7,
+    slug: 'the-kate',
     name: 'The Kate',
     price: 5400,
     image: '/images/kate/kate-1.jpg',
@@ -180,6 +179,7 @@ export const products = [
   },
   {
     id: 8,
+    slug: 'cutting-boards',
     name: 'Cutting Boards',
     price: 95,
     image: '/images/boards/walnut-paddle.jpg',
